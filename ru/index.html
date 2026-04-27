@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Семья Шляхтиных · Табели успеваемости 2025–26</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ff-head: 'Syne', sans-serif;
+  --ff-body: 'DM Sans', sans-serif;
+  --bg: #0e0e12;
+  --surface: #17171d;
+  --surface2: #1f1f28;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0eff5;
+  --muted: rgba(240,239,245,0.45);
+  --sofiia-h: #a78bfa;
+  --sofiia-l: #7c3aed;
+  --sofiia-glow: rgba(167,139,250,0.18);
+  --mark-h: #34d399;
+  --mark-l: #059669;
+  --mark-glow: rgba(52,211,153,0.18);
+  --maiia-h: #fb923c;
+  --maiia-l: #ea580c;
+  --maiia-glow: rgba(251,146,60,0.18);
+  --active-h: var(--sofiia-h);
+  --active-l: var(--sofiia-l);
+  --active-glow: var(--sofiia-glow);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── LANDING ── */
+#landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+#landing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(167,139,250,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(52,211,153,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 60% 20%, rgba(251,146,60,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.landing-year {
+  font-family: var(--ff-head);
+  font-size: 11px;
+  letter-spacing: .25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.landing-title {
+  font-family: var(--ff-head);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  margin-bottom: .6rem;
+  animation: fadeUp .7s .1s ease both;
+}
+.landing-title span {
+  background: linear-gradient(135deg, #a78bfa, #34d399, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.landing-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 3.5rem;
+  font-weight: 300;
+  animation: fadeUp .7s .2s ease both;
+}
+.child-cards {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp .7s .3s ease both;
+}
+.child-card {
+  width: 220px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 1.5rem 1.75rem;
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.child-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.child-card[data-child="sofiia"]::before { background: var(--sofiia-glow); }
+.child-card[data-child="mark"]::before   { background: var(--mark-glow); }
+.child-card[data-child="maiia"]::before  { background: var(--maiia-glow); }
+.child-card:hover { transform: translateY(-6px); }
+.child-card[data-child="sofiia"]:hover { border-color: var(--sofiia-h); box-shadow: 0 20px 60px var(--sofiia-glow); }
+.child-card[data-child="mark"]:hover   { border-color: var(--mark-h);   box-shadow: 0 20px 60px var(--mark-glow); }
+.child-card[data-child="maiia"]:hover  { border-color: var(--maiia-h);  box-shadow: 0 20px 60px var(--maiia-glow); }
+.child-card:hover::before { opacity: 1; }
+.child-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  position: relative;
+}
+[data-child="sofiia"] .child-avatar { background: linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; }
+[data-child="mark"] .child-avatar   { background: linear-gradient(135deg,#059669,#34d399); color:#fff; }
+[data-child="maiia"] .child-avatar  { background: linear-gradient(135deg,#ea580c,#fb923c); color:#fff; }
+.child-name {
+  font-family: var(--ff-head);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+[data-child="sofiia"] .child-name { color: var(--sofiia-h); }
+[data-child="mark"] .child-name   { color: var(--mark-h); }
+[data-child="maiia"] .child-name  { color: var(--maiia-h); }
+.child-year { font-size: .8rem; color: var(--muted); margin-bottom: 1.25rem; }
+.child-cta {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  transition: background .2s, color .2s;
+}
+[data-child="sofiia"] .child-cta { color: var(--sofiia-h); }
+[data-child="mark"] .child-cta   { color: var(--mark-h); }
+[data-child="maiia"] .child-cta  { color: var(--maiia-h); }
+.child-card:hover [data-child="sofiia"] .child-cta,
+[data-child="sofiia"]:hover .child-cta { background: var(--sofiia-h); color: #fff; }
+[data-child="mark"]:hover .child-cta   { background: var(--mark-h);   color: #fff; }
+[data-child="maiia"]:hover .child-cta  { background: var(--maiia-h);  color: #fff; }
+
+/* ── REPORT PAGE ── */
+#report { display: none; }
+#report.visible { display: block; }
+
+/* NAV */
+.report-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14,14,18,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: .75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-back {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--ff-body);
+  font-size: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--text); }
+.nav-name {
+  font-family: var(--ff-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--active-h);
+}
+.nav-tabs {
+  margin-left: auto;
+  display: flex;
+  gap: .25rem;
+}
+.nav-tab {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--ff-body);
+  font-size: .8rem;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  transition: background .2s, color .2s;
+}
+.nav-tab:hover { background: var(--surface2); color: var(--text); }
+.nav-tab.active { background: var(--surface2); color: var(--active-h); }
+
+/* HERO */
+.hero {
+  padding: 4rem 2rem 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.hero-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-head);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  position: relative;
+}
+.hero-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--active-h);
+  opacity: .5;
+}
+.hero-sub { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .1em; }
+.hero-name { font-family: var(--ff-head); font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; line-height: 1; margin-bottom: .75rem; color: var(--active-h); }
+.hero-quote { font-size: .95rem; color: var(--muted); font-style: italic; line-height: 1.6; max-width: 560px; }
+
+/* SECTIONS */
+.report-sections { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; }
+.section-block { margin-bottom: 3rem; animation: fadeUp .5s ease both; }
+.section-label {
+  font-family: var(--ff-head);
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--active-h);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+h2.section-title { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+
+/* STAT ROW */
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: .75rem; margin-bottom: 1.5rem; }
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+  transition: border-color .2s;
+}
+.stat-card:hover { border-color: var(--active-h); }
+.stat-label { font-size: .75rem; color: var(--muted); margin-bottom: .4rem; }
+.stat-val { font-family: var(--ff-head); font-size: 1.8rem; font-weight: 800; color: var(--active-h); line-height: 1; }
+.stat-delta { font-size: .75rem; margin-top: .3rem; }
+.delta-up   { color: #34d399; }
+.delta-down { color: #f87171; }
+.delta-same { color: var(--muted); }
+
+/* SUBJECT GRID */
+.subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .75rem; }
+.subj-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  transition: border-color .3s, transform .2s;
+  cursor: default;
+}
+.subj-card:hover { border-color: var(--active-h); transform: translateY(-2px); }
+.subj-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+.subj-icon { font-size: 1.4rem; }
+.subj-name { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; flex: 1; }
+.subj-grades { display: flex; gap: .4rem; align-items: center; }
+.grade-pill {
+  font-family: var(--ff-head);
+  font-size: .8rem;
+  font-weight: 700;
+  padding: .2rem .55rem;
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.grade-pill.t2 { background: var(--active-glow); color: var(--active-h); border-color: var(--active-h); }
+.arrow-grade { font-size: .8rem; color: var(--muted); }
+.subj-bar-wrap { height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+.subj-bar { height: 4px; border-radius: 2px; transition: width 1s cubic-bezier(.16,1,.3,1); background: var(--active-h); }
+.subj-quote { font-size: .75rem; color: var(--muted); margin-top: .6rem; line-height: 1.5; font-style: italic; }
+
+/* ELS PATH */
+.els-path { display: flex; align-items: center; gap: 0; margin: 1.5rem 0; flex-wrap: wrap; }
+.els-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  position: relative;
+}
+.els-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-head);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface);
+  transition: all .4s ease;
+  position: relative;
+  z-index: 1;
+}
+.els-circle.done {
+  border-color: var(--active-h);
+  background: var(--active-glow);
+  color: var(--active-h);
+}
+.els-circle.current {
+  border-color: var(--active-h);
+  background: var(--active-h);
+  color: #fff;
+  box-shadow: 0 0 24px var(--active-glow);
+}
+.els-label { font-size: .7rem; color: var(--muted); text-align: center; max-width: 70px; }
+.els-label.done, .els-label.current { color: var(--active-h); }
+.els-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  min-width: 30px;
+  max-width: 80px;
+  position: relative;
+  top: -16px;
+}
+.els-connector.done { background: var(--active-h); }
+
+/* RADAR */
+.radar-wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+canvas.radar-canvas { max-width: 280px; max-height: 280px; }
+.radar-legend { display: flex; flex-direction: column; gap: .6rem; }
+.radar-leg-item { display: flex; align-items: center; gap: .6rem; font-size: .85rem; }
+.radar-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* PROGRESS BARS */
+.progress-list { display: flex; flex-direction: column; gap: .85rem; }
+.prog-item { }
+.prog-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .35rem; }
+.prog-name { font-size: .9rem; font-weight: 500; }
+.prog-vals { font-size: .8rem; color: var(--muted); }
+.prog-track { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; position: relative; }
+.prog-fill-t1 { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: var(--surface2); border: 1px solid var(--muted); opacity: .5; transition: width 1.2s cubic-bezier(.16,1,.3,1); }
+.prog-fill-t2 { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: var(--active-h); transition: width 1.4s .2s cubic-bezier(.16,1,.3,1); }
+
+/* STRENGTHS / NEXT UP */
+.two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+.info-card-title { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; margin-bottom: 1rem; }
+.strength-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  margin-bottom: .85rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--border);
+}
+.strength-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.strength-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
+.strength-text { font-size: .85rem; line-height: 1.5; color: var(--muted); }
+.strength-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: .15rem; }
+.quest-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  margin-bottom: .85rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--border);
+}
+.quest-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.quest-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--active-glow);
+  border: 1px solid var(--active-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--active-h);
+  flex-shrink: 0;
+}
+.quest-text { font-size: .85rem; line-height: 1.5; color: var(--muted); }
+.quest-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: .15rem; }
+
+/* FUN STATS */
+.fun-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; }
+.fun-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s;
+}
+.fun-card:hover { transform: translateY(-3px); border-color: var(--active-h); }
+.fun-emoji { font-size: 2rem; margin-bottom: .6rem; display: block; }
+.fun-stat { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 800; color: var(--active-h); margin-bottom: .3rem; }
+.fun-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+/* UTILS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeUp .5s ease both; }
+
+/* TOGGLE LEGEND */
+.legend-row { display: flex; gap: 1.25rem; margin-bottom: 1rem; font-size: .8rem; color: var(--muted); align-items: center; }
+.leg-box { width: 12px; height: 12px; border-radius: 3px; }
+
+/* CHART CONTAINER */
+.chart-container { position: relative; width: 100%; }
+
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-avatar { margin: 0 auto; }
+  .hero-quote { margin: 0 auto; }
+  .two-col-grid { grid-template-columns: 1fr; }
+  .nav-tabs { display: none; }
+  .els-path { gap: 4px; }
+  .els-connector { min-width: 16px; }
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .35rem .6rem .35rem .5rem;
+  text-decoration: none;
+  font-family: var(--ff-body);
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: border-color .2s, color .2s, box-shadow .2s;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+.lang-switch:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: var(--text);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.lang-switch .flag { font-size: 1rem; line-height: 1; }
+.lang-switch .lang-label { letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА ══════════════ -->
+<a class="lang-switch" href="/">
+  <span class="flag">🇬🇧</span>
+  <span class="lang-label">English</span>
+</a>
+
+<!-- ══════════════ ГЛАВНАЯ СТРАНИЦА ══════════════ -->
+<div id="landing">
+  <div class="landing-year">PBISS · Учебный год 2025–26</div>
+  <h1 class="landing-title"><span>Шляхтины</span><br>Семейные табели</h1>
+  <p class="landing-sub">1-й и 2-й триместры · Твои успехи, твои данные</p>
+  <div class="child-cards">
+    <div class="child-card" data-child="sofiia" onclick="showReport('sofiia')">
+      <div class="child-avatar">СФ</div>
+      <div class="child-name">Соня</div>
+      <div class="child-year">9 класс · IGCSE</div>
+      <span class="child-cta">Смотреть →</span>
+    </div>
+    <div class="child-card" data-child="mark" onclick="showReport('mark')">
+      <div class="child-avatar">МК</div>
+      <div class="child-name">Марк</div>
+      <div class="child-year">8 класс · Средняя школа</div>
+      <span class="child-cta">Смотреть →</span>
+    </div>
+    <div class="child-card" data-child="maiia" onclick="showReport('maiia')">
+      <div class="child-avatar">МА</div>
+      <div class="child-name">Майя</div>
+      <div class="child-year">6 класс · Начальная школа</div>
+      <span class="child-cta">Смотреть →</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ СТРАНИЦА ОТЧЁТА ══════════════ -->
+<div id="report">
+  <nav class="report-nav">
+    <button class="nav-back" onclick="goBack()">← Все табели</button>
+    <div class="nav-name" id="navName"></div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="scrollTo2('journey')">Прогресс</button>
+      <button class="nav-tab" onclick="scrollTo2('subjects')">Предметы</button>
+      <button class="nav-tab" onclick="scrollTo2('english')">Английский</button>
+      <button class="nav-tab" onclick="scrollTo2('strengths')">Сильные стороны</button>
+      <button class="nav-tab" onclick="scrollTo2('fun')">Интересные факты</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-avatar" id="heroAvatar"></div>
+    <div>
+      <div class="hero-sub" id="heroSub"></div>
+      <div class="hero-name" id="heroName"></div>
+      <div class="hero-quote" id="heroQuote"></div>
+    </div>
+  </div>
+
+  <div class="report-sections">
+
+    <!-- ПРОГРЕСС -->
+    <div class="section-block" id="journey">
+      <div class="section-label">01 · Твой прогресс</div>
+      <div class="stat-row" id="statRow"></div>
+
+      <div class="legend-row">
+        <span style="display:flex;align-items:center;gap:.4rem;"><span class="leg-box" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)"></span>1-й триместр</span>
+        <span style="display:flex;align-items:center;gap:.4rem;"><span class="leg-box" id="leg2"></span>2-й триместр</span>
+      </div>
+      <div class="progress-list" id="progressList"></div>
+    </div>
+
+    <!-- ПРЕДМЕТЫ -->
+    <div class="section-block" id="subjects">
+      <div class="section-label">02 · Подробно по предметам</div>
+      <div class="subj-grid" id="subjGrid"></div>
+    </div>
+
+    <!-- РАДАР -->
+    <div class="section-block">
+      <div class="section-label">03 · Карта навыков</div>
+      <div class="radar-wrap">
+        <div class="chart-container" style="width:280px;height:280px;flex-shrink:0">
+          <canvas id="radarChart" width="280" height="280"></canvas>
+        </div>
+        <div class="radar-legend" id="radarLegend"></div>
+      </div>
+    </div>
+
+    <!-- АНГЛИЙСКИЙ ELS -->
+    <div class="section-block" id="english">
+      <div class="section-label">04 · Путь в английском языке</div>
+      <h2 class="section-title" id="elsTitle"></h2>
+      <div class="els-path" id="elsPath"></div>
+      <div id="elsStrands" style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;"></div>
+    </div>
+
+    <!-- СИЛЬНЫЕ СТОРОНЫ + ЗАДАЧИ -->
+    <div class="section-block" id="strengths">
+      <div class="section-label">05 · Суперсилы и цели</div>
+      <div class="two-col-grid">
+        <div class="info-card">
+          <div class="info-card-title">⚡ Твои суперсилы</div>
+          <div id="strengthsList"></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">🎯 Задачи на следующий триместр</div>
+          <div id="questsList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ИНТЕРЕСНЫЕ ФАКТЫ -->
+    <div class="section-block" id="fun">
+      <div class="section-label">06 · Интересные факты</div>
+      <div class="fun-grid" id="funGrid"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const DATA = {
+  sofiia: {
+    name: 'Соня', initials: 'СФ', year: '9 класс · IGCSE',
+    color: '#a78bfa', glow: 'rgba(167,139,250,0.18)',
+    avatarGrad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
+    quote: '«Соня — вдумчивый и творческий ученик, который привносит оригинальность и юмор в свои работы. Она умеет хорошо писать и обладает явным потенциалом как автор.» — г-н Мелмот',
+    stats: [
+      { label: 'Английский', val: 'A', delta: '↑ с уровня B', dir: 'up' },
+      { label: 'Математика (прогноз)', val: 'A', delta: 'Текущий: B', dir: 'same' },
+      { label: 'STEM+', val: 'A*', delta: '↑ с уровня B', dir: 'up' },
+      { label: 'Дней пропущено', val: '5', delta: '+3 с 1-го триместра', dir: 'down' },
+    ],
+    progress: [
+      { name:'Английский', t1:5, t2:6, max:8, t1l:'B', t2l:'A' },
+      { name:'Математика', t1:7, t2:5, max:8, t1l:'A*', t2l:'B' },
+      { name:'Биология', t1:5, t2:5, max:8, t1l:'B', t2l:'B' },
+      { name:'Химия', t1:4, t2:4, max:8, t1l:'C', t2l:'C' },
+      { name:'Физика', t1:3, t2:4, max:8, t1l:'D', t2l:'C' },
+      { name:'История', t1:4, t2:4, max:8, t1l:'C', t2l:'C' },
+      { name:'Социология', t1:2, t2:3, max:8, t1l:'E', t2l:'D' },
+      { name:'Искусство', t1:3, t2:4, max:8, t1l:'D', t2l:'C' },
+      { name:'STEM+', t1:5, t2:7, max:8, t1l:'B', t2l:'A*' },
+    ],
+    subjects: [
+      { icon:'📖', name:'Английский и Лит.', t1:'B', t2:'A', pct:75, quote:'Творческий голос, оригинальные идеи — продолжай читать художественную литературу на английском!' },
+      { icon:'➗', name:'Математика', t1:'A*', t2:'B', pct:62, quote:'Выдающийся решатель задач — ставь себе более сложные вызовы' },
+      { icon:'🧬', name:'Биология', t1:'B', t2:'B', pct:62, quote:'Заразительный энтузиазм — освой команды IGCSE, чтобы получить высший балл' },
+      { icon:'⚗️', name:'Химия', t1:'C', t2:'C', pct:50, quote:'Сильный самостоятельный работник — регулярное повторение дома — ключ к успеху' },
+      { icon:'⚡', name:'Физика', t1:'D', t2:'C', pct:50, quote:'Идёт в гору! Избегай отвлечений; продолжай повторять дома' },
+      { icon:'📜', name:'История', t1:'C', t2:'C', pct:50, quote:'Улучшила ответы на 10 баллов — теперь применяй тот же уровень детализации в коротких ответах' },
+      { icon:'🌍', name:'Социология', t1:'E', t2:'D', pct:37, quote:'Используй больше социологических терминов и структурируй свои эссе' },
+      { icon:'🎨', name:'Изобразительное искусство', t1:'D', t2:'C', pct:50, quote:'Оценка выросла на целый уровень — продолжай экспериментировать с техниками!' },
+      { icon:'🔧', name:'STEM+', t1:'B', t2:'A*', pct:87, quote:'Лучшая в классе — превышает уровень! Выдающаяся работа.' },
+      { icon:'🌏', name:'Тайский', t1:'C', t2:'C', pct:50, quote:'Мотивированная и уверенная; укрепляй навыки письма' },
+    ],
+    radar: {
+      labels: ['Английский', 'Математика', 'Науки', 'Гуманитарные', 'STEM+', 'Искусство'],
+      t1: [62, 87, 45, 47, 62, 37],
+      t2: [75, 62, 54, 50, 87, 50],
+    },
+    els: {
+      title: 'Не в ELS — уже в основном потоке английского',
+      nodes: [
+        { label:'Уровень 3', status:'done' },
+        { label:'Уровень 2', status:'done' },
+        { label:'Уровень 1', status:'done' },
+        { label:'Основной поток ✓', status:'current' },
+      ],
+      strands: [
+        { name:'Аудирование', t1:'—', t2:'Основной поток' },
+        { name:'Чтение', t1:'—', t2:'Основной поток' },
+        { name:'Говорение', t1:'—', t2:'Основной поток' },
+        { name:'Письмо', t1:'—', t2:'Основной поток' },
+      ],
+      comment: 'Соня никогда не была в программе ELS — она поступила в PBISS, уже работая на уровне основного английского потока. Её учитель отмечает, что она пишет с оригинальностью и юмором, и рекомендует читать больше художественной литературы на английском, чтобы углубить языковое чутьё.',
+    },
+    strengths: [
+      { icon:'🧮', title:'Продвинутый математик', text:'Прогноз A, был A* в 1-м триместре — твоё математическое мышление действительно на высшем уровне.' },
+      { icon:'✍️', title:'Творческий автор', text:'Учителя называют твои идеи «уникальными» и «оригинальными» — это редкость на уровне IGCSE.' },
+      { icon:'🔧', title:'Звезда STEM+', text:'A* по STEM+ — ты превзошла собственные ожидания по уровню.' },
+    ],
+    quests: [
+      { title:'Прокачать физику', text:'Ты прошла путь D→C. Следующий шаг — B. Один час повторения дома в неделю делает разницу.' },
+      { title:'Освоить язык экзаменов IGCSE', text:'Биология и химия требуют конкретных команд. Выучи их — это стоит баллов.' },
+      { title:'Читать художественную литературу на английском', text:'Твоё письмо улучшается, когда ты читаешь больше. Даже 20 минут вечером имеют значение.' },
+      { title:'Пунктуальность', text:'9 опозданий во 2-м триместре. Приход вовремя означает, что ты не пропускаешь ключевые идеи на каждом уроке.' },
+    ],
+    fun: [
+      { emoji:'🏆', stat:'A*', desc:'Твоя оценка по STEM+ — максимально возможная' },
+      { emoji:'📈', stat:'+2 уровня', desc:'Социология улучшилась с E до D. Это два полных шага!' },
+      { emoji:'⚡', stat:'№1', desc:'Ты лучший знаток английского в семье' },
+      { emoji:'🌟', stat:'Прогноз A', desc:'Учителя верят, что ты идёшь к A по английскому' },
+      { emoji:'🔬', stat:'A*', desc:'Прогноз по биологии — у тебя есть талант, теперь нужна техника' },
+      { emoji:'🎨', stat:'D→C', desc:'Искусство выросло на целый уровень за один триместр' },
+    ],
+  },
+
+  mark: {
+    name: 'Марк', initials: 'МК', year: '8 класс · Средняя школа',
+    color: '#34d399', glow: 'rgba(52,211,153,0.18)',
+    avatarGrad: 'linear-gradient(135deg,#059669,#34d399)',
+    quote: '«Марк — умный ученик с природной склонностью к программированию, легко усваивающий новые концепции.» — г-н Кокс (Информатика)',
+    stats: [
+      { label: 'Информатика', val: '5/5', delta: 'Отлично оба триместра', dir: 'up' },
+      { label: 'STEM+', val: '6', delta: '↑ с 4.2 — выше уровня', dir: 'up' },
+      { label: 'Прыжок в науке', val: '1.3→2.9', delta: 'Самый большой скачок!', dir: 'up' },
+      { label: 'Опозданий', val: '0', delta: 'Идеальная пунктуальность', dir: 'up' },
+    ],
+    progress: [
+      { name:'Английский', t1:3.2, t2:3.3, max:6, t1l:'3.2', t2l:'3.3' },
+      { name:'Математика', t1:2.8, t2:2.6, max:6, t1l:'2.8', t2l:'2.6' },
+      { name:'Наука', t1:1.3, t2:2.9, max:6, t1l:'1.3', t2l:'2.9' },
+      { name:'Информатика', t1:5, t2:5, max:6, t1l:'5', t2l:'5' },
+      { name:'STEM+', t1:4.2, t2:6, max:6, t1l:'4.2', t2l:'6' },
+      { name:'География', t1:2.5, t2:3.3, max:6, t1l:'2.5', t2l:'3.3' },
+      { name:'История', t1:3, t2:2.6, max:6, t1l:'3.0', t2l:'2.6' },
+      { name:'Китайский', t1:4.5, t2:4.5, max:6, t1l:'4.5', t2l:'4.5' },
+      { name:'Тайский', t1:3.3, t2:3.5, max:6, t1l:'3.3', t2l:'3.5' },
+    ],
+    subjects: [
+      { icon:'💻', name:'Информатика', t1:'5', t2:'5', pct:83, quote:'Природная склонность к Python — продолжай сдавать задания вовремя!' },
+      { icon:'🔧', name:'STEM+', t1:'4.2', t2:'6', pct:100, quote:'Выше уровня! Твой лучший предмет — технический гений!' },
+      { icon:'🇨🇳', name:'Китайский', t1:'4.5', t2:'4.5', pct:75, quote:'Стабильно отлично — дружелюбный и внимательный на уроках' },
+      { icon:'📖', name:'Английский', t1:'3.2', t2:'3.3', pct:55, quote:'Хороший анализ романа — продолжай читать и повышай балл IXL' },
+      { icon:'➗', name:'Математика', t1:'2.8', t2:'2.6', pct:43, quote:'Усилия требуют внимания — аккуратность откроет больше баллов' },
+      { icon:'🔬', name:'Наука', t1:'1.3', t2:'2.9', pct:48, quote:'Самый большой прыжок в семье! Теперь активнее работает в группах — продолжай!' },
+      { icon:'🗺️', name:'География', t1:'2.5', t2:'3.3', pct:55, quote:'«Удивительное улучшение» — слова самого учителя. Молодец!' },
+      { icon:'📜', name:'История', t1:'3.0', t2:'2.6', pct:43, quote:'Используй больше доказательств в ответах — объясняй своё мышление подробнее' },
+      { icon:'🌏', name:'Тайский', t1:'3.3', t2:'3.5', pct:58, quote:'Уважительный, целеустремлённый — поработай над орфографией' },
+      { icon:'🎵', name:'Музыка', t1:'2.8', t2:'2.6', pct:43, quote:'Позитивная энергия в классе — фокусируйся больше во время занятий' },
+    ],
+    radar: {
+      labels: ['Информатика', 'STEM+', 'Языки', 'Науки', 'Гуманитарные', 'Английский'],
+      t1: [83, 70, 65, 22, 46, 53],
+      t2: [83, 100, 67, 48, 50, 55],
+    },
+    els: {
+      title: 'Путь ELS: Уровень 3 → Уровень 2 → Уровень 1 в следующем триместре',
+      nodes: [
+        { label:'Уровень 3 Т1', status:'done' },
+        { label:'Уровень 2 Т2', status:'done' },
+        { label:'Уровень 1 Т3', status:'current' },
+        { label:'Выпускник!', status:'future' },
+      ],
+      strands: [
+        { name:'Аудирование', t1:'Развивающийся', t2:'Компетентный' },
+        { name:'Чтение', t1:'Свободный', t2:'Компетентный' },
+        { name:'Говорение', t1:'Свободный', t2:'Компетентный' },
+        { name:'Письмо', t1:'Развивающийся', t2:'Компетентный' },
+      ],
+      comment: 'Марк перешёл с уровня 3 на уровень 2 в 1-м триместре, а в следующем триместре перейдёт на уровень 1 (поддержка внутри класса). Его учитель ELS говорит, что он добился «исключительного прогресса» и обладает сильными навыками критического мышления. Теперь он чаще отвечает на вопросы и активно участвует в обсуждениях.',
+    },
+    strengths: [
+      { icon:'💻', title:'Прирождённый программист', text:'Информатика — Отлично оба триместра — твои навыки Python впечатляют каждого учителя.' },
+      { icon:'🔧', title:'Гений STEM', text:'Оценка 6 по STEM+ — это значит выше уровня. Ты освоил 3D-печать!' },
+      { icon:'⏰', title:'Идеальная пунктуальность', text:'Ноль опозданий за весь год. Это говорит о настоящей дисциплине и уважении.' },
+    ],
+    quests: [
+      { title:'Усилия в математике', text:'Единственный предмет, где усилия упали до «требует внимания». Покажи учителям, на что ты способен.' },
+      { title:'Сдавай задания вовремя', text:'Учитель информатики говорит, что у тебя есть талант — теперь убедись, что каждое задание сдано.' },
+      { title:'Письменные работы по истории', text:'Используй больше доказательств в своих ответах. Объясняй ПОЧЕМУ, а не только ЧТО произошло.' },
+      { title:'Говори больше', text:'Учитель географии увидел «удивительное улучшение» во 2-м триместре. Продолжай участвовать в групповых обсуждениях — твои идеи хороши!' },
+    ],
+    fun: [
+      { emoji:'💻', stat:'Оценка 6', desc:'STEM+ — максимальная оценка. Лучше просто невозможно!' },
+      { emoji:'🚀', stat:'+1.6', desc:'Наука выросла на 1.6 пункта — самое большое улучшение в семье за один триместр' },
+      { emoji:'⏰', stat:'0 опозданий', desc:'Ни единого опоздания за весь год — ты никогда не опаздываешь!' },
+      { emoji:'🐍', stat:'Python', desc:'Ты умеешь кодить: переменные, циклы, функции, условия. Настоящие навыки.' },
+      { emoji:'🖨️', stat:'3D-печать', desc:'Ты разработал и напечатал реальные объекты по STEM+ в этом триместре' },
+      { emoji:'🇨🇳', stat:'4.5', desc:'Китайский — стабильно весь год. Уже два языка!' },
+    ],
+  },
+
+  maiia: {
+    name: 'Майя', initials: 'МА', year: '6 класс · Начальная школа',
+    color: '#fb923c', glow: 'rgba(251,146,60,0.18)',
+    avatarGrad: 'linear-gradient(135deg,#ea580c,#fb923c)',
+    quote: '«Майя — вдумчивый и способный ученик, уделяющий большое внимание деталям. Её почерк особенно аккуратный и красиво оформленный.» — Учитель ELS',
+    stats: [
+      { label: 'Прыжок в английском', val: '2.1→3.1', delta: '+1.0 за один триместр!', dir: 'up' },
+      { label: 'Прыжок в математике', val: '3.1→4.1', delta: '+1.0 → уверенный уровень', dir: 'up' },
+      { label: 'ELS в след. триместре', val: 'Ур. 1', delta: '3→2→1 за 2 триместра', dir: 'up' },
+      { label: 'Дней пропущено', val: '13', delta: '↑ с 7 в 1-м триместре', dir: 'down' },
+    ],
+    progress: [
+      { name:'Английский', t1:2.1, t2:3.1, max:6, t1l:'2.1', t2l:'3.1' },
+      { name:'Математика', t1:3.1, t2:4.1, max:6, t1l:'3.1', t2l:'4.1' },
+      { name:'Наука', t1:3.1, t2:3.7, max:6, t1l:'3.1', t2l:'3.7' },
+      { name:'ИКТ', t1:4.3, t2:4.8, max:6, t1l:'4.3', t2l:'4.8' },
+      { name:'STEM+', t1:4, t2:4, max:6, t1l:'4.0', t2l:'4.0' },
+      { name:'Китайский', t1:4.5, t2:4.5, max:6, t1l:'4.5', t2l:'4.5' },
+      { name:'Музыка', t1:4.5, t2:4.8, max:6, t1l:'4.5', t2l:'4.8' },
+      { name:'Тайский', t1:3.5, t2:3.5, max:6, t1l:'3.5', t2l:'3.5' },
+      { name:'Изобразительное искусство', t1:3.5, t2:3.6, max:6, t1l:'3.5', t2l:'3.6' },
+    ],
+    subjects: [
+      { icon:'🎵', name:'Музыка', t1:'4.5', t2:'4.8', pct:80, quote:'Настоящий талант — ты повысила оценку и это заметно!' },
+      { icon:'🇨🇳', name:'Китайский', t1:'4.5', t2:'4.5', pct:75, quote:'Стабильно и отлично — сразу два языка!' },
+      { icon:'💻', name:'ИКТ', t1:'4.3', t2:'4.8', pct:80, quote:'Усилия улучшились с «Удовлетворительно» до «Очень хорошо» — отличный прогресс!' },
+      { icon:'🔧', name:'STEM+', t1:'4.0', t2:'4.0', pct:67, quote:'Уверенное понимание — стабильно и надёжно' },
+      { icon:'📖', name:'Английский', t1:'2.1', t2:'3.1', pct:52, quote:'Удивительный прыжок — продолжай практиковать полные предложения!' },
+      { icon:'➗', name:'Математика', t1:'3.1', t2:'4.1', pct:68, quote:'Сильное владение вычислениями — следующий шаг: задачи в словах!' },
+      { icon:'🔬', name:'Наука', t1:'3.1', t2:'3.7', pct:62, quote:'Экосистемы: 4.5 — твоя лучшая тема по науке!' },
+      { icon:'🌏', name:'Тайский', t1:'3.5', t2:'3.5', pct:58, quote:'Уверенно задаёт вопросы — поработай над навыками письма' },
+      { icon:'🎨', name:'Изобразительное искусство', t1:'3.5', t2:'3.6', pct:60, quote:'Аккуратная, тщательная работа, которая ясно показывает твои идеи' },
+    ],
+    radar: {
+      labels: ['Музыка', 'Китайский', 'ИКТ', 'Математика', 'Английский', 'Наука'],
+      t1: [75, 75, 72, 52, 35, 52],
+      t2: [80, 75, 80, 68, 52, 62],
+    },
+    els: {
+      title: 'Путь ELS: самый быстрый прогресс в семье!',
+      nodes: [
+        { label:'Уровень 3 Т1', status:'done' },
+        { label:'Уровень 2 Т2', status:'done' },
+        { label:'Уровень 1 Т3', status:'current' },
+        { label:'Выпускник!', status:'future' },
+      ],
+      strands: [
+        { name:'Аудирование', t1:'Начальный', t2:'Компетентный' },
+        { name:'Чтение', t1:'Развивающийся', t2:'Компетентный' },
+        { name:'Говорение', t1:'Развивающийся', t2:'Компетентный' },
+        { name:'Письмо', t1:'Развивающийся', t2:'Компетентный' },
+      ],
+      comment: 'ВСЕ четыре направления ELS выросли на полный уровень всего за один триместр! Учитель 1-го триместра назвал тебя «одним из лучших учеников класса». Учитель 2-го триместра отметил, что твой почерк «особенно аккуратный и красиво оформленный». В следующем триместре ты переходишь на уровень 1 — почти выпускница ELS!',
+    },
+    strengths: [
+      { icon:'🚀', title:'Самый быстрый изучатель английского', text:'Уровень 3→2→1 всего за два триместра. Твои учителя восхищены твоим прогрессом.' },
+      { icon:'🎵', title:'Музыкальный талант', text:'4.8 по музыке — одна из твоих лучших оценок. У тебя настоящий дар.' },
+      { icon:'😊', title:'Социальная звезда', text:'Учитель сказал, что ты сразу же завела друзей и ведёшь себя позитивно по всей школе.' },
+    ],
+    quests: [
+      { title:'Ходи в школу каждый день', text:'За этот год 13 пропущенных дней. Каждый день в школе укрепляет твой английский. Старайся не пропускать!' },
+      { title:'Задачи в словах по математике', text:'Ты отлично считаешь — теперь практикуй чтение и решение задач-историй на английском.' },
+      { title:'Говори полными предложениями', text:'Главный совет учителя ELS: каждый день дома практикуй говорение полными предложениями.' },
+      { title:'Читай 20 минут в день', text:'Чтение книг (даже лёгких!) улучшит твой английский быстрее всего остального.' },
+    ],
+    fun: [
+      { emoji:'🚀', stat:'3 уровня', desc:'ELS Уровень 3→2→1 всего за два триместра — быстрее всех в семье!' },
+      { emoji:'🎵', stat:'4.8', desc:'Музыка — твоя самая высокая оценка — почти 5!' },
+      { emoji:'➗', stat:'+1.0', desc:'Математика выросла на целый пункт за один триместр. Это огромно.' },
+      { emoji:'📖', stat:'+1.0', desc:'Английский тоже вырос на целый пункт. Двойное достижение!' },
+      { emoji:'😊', stat:'Топ 🌟', desc:'Учитель ELS назвал тебя одной из лучших учеников класса' },
+      { emoji:'✍️', stat:'Самый аккуратный', desc:'Твой почерк был особо отмечен и похвален учителем' },
+    ],
+  },
+};
+
+let currentChild = null;
+let radarChartInstance = null;
+
+function showReport(child) {
+  currentChild = child;
+  const d = DATA[child];
+
+  document.documentElement.style.setProperty('--active-h', d.color);
+  document.documentElement.style.setProperty('--active-l', d.color);
+  document.documentElement.style.setProperty('--active-glow', d.glow);
+
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('report').classList.add('visible');
+
+  document.getElementById('navName').textContent = d.name;
+
+  const av = document.getElementById('heroAvatar');
+  av.textContent = d.initials;
+  av.style.background = d.avatarGrad;
+  document.getElementById('heroSub').textContent = d.year;
+  document.getElementById('heroName').textContent = d.name;
+  document.getElementById('heroQuote').textContent = d.quote;
+  document.getElementById('leg2').style.background = d.color;
+
+  document.getElementById('statRow').innerHTML = d.stats.map(s => `
+    <div class="stat-card">
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-val">${s.val}</div>
+      <div class="stat-delta delta-${s.dir}">${s.delta}</div>
+    </div>`).join('');
+
+  document.getElementById('progressList').innerHTML = d.progress.map(p => {
+    const pctT1 = Math.round((p.t1 / p.max) * 100);
+    const pctT2 = Math.round((p.t2 / p.max) * 100);
+    const dir = p.t2 > p.t1 ? 'delta-up' : p.t2 < p.t1 ? 'delta-down' : 'delta-same';
+    const arrow = p.t2 > p.t1 ? '↑' : p.t2 < p.t1 ? '↓' : '→';
+    return `
+    <div class="prog-item">
+      <div class="prog-header">
+        <span class="prog-name">${p.name}</span>
+        <span class="prog-vals ${dir}">${arrow} ${p.t1l} → ${p.t2l}</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill-t1" style="width:${pctT1}%"></div>
+        <div class="prog-fill-t2" style="width:0%" data-target="${pctT2}"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('subjGrid').innerHTML = d.subjects.map(s => {
+    const dir = parseFloat(s.t2) > parseFloat(s.t1) ? 'delta-up' : parseFloat(s.t2) < parseFloat(s.t1) ? 'delta-down' : 'delta-same';
+    return `
+    <div class="subj-card">
+      <div class="subj-top">
+        <span class="subj-icon">${s.icon}</span>
+        <span class="subj-name">${s.name}</span>
+        <div class="subj-grades">
+          <span class="grade-pill">${s.t1}</span>
+          <span class="arrow-grade ${dir}">→</span>
+          <span class="grade-pill t2">${s.t2}</span>
+        </div>
+      </div>
+      <div class="subj-bar-wrap"><div class="subj-bar" style="width:0%" data-target="${s.pct}%"></div></div>
+      <div class="subj-quote">${s.quote}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('elsTitle').textContent = d.els.title;
+  document.getElementById('elsPath').innerHTML = d.els.nodes.map((n,i) => {
+    const conn = i < d.els.nodes.length - 1
+      ? `<div class="els-connector ${n.status === 'done' ? 'done' : ''}"></div>`
+      : '';
+    return `
+    <div class="els-node">
+      <div class="els-circle ${n.status}">${n.status === 'done' ? '✓' : n.status === 'current' ? '★' : n.label.split(' ')[0]}</div>
+      <div class="els-label ${n.status}">${n.label}</div>
+    </div>${conn}`;
+  }).join('');
+
+  document.getElementById('elsStrands').innerHTML = d.els.strands.map(s => `
+    <div class="subj-card" style="padding:.85rem 1rem;">
+      <div style="font-size:.8rem;font-weight:500;margin-bottom:.4rem;">${s.name}</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:.2rem;">Т1: ${s.t1}</div>
+      <div style="font-size:.75rem;color:var(--active-h);font-weight:500;">Т2: ${s.t2}</div>
+    </div>`).join('');
+
+  const existingComment = document.getElementById('elsComment');
+  if (existingComment) existingComment.remove();
+  const commentEl = document.createElement('p');
+  commentEl.id = 'elsComment';
+  commentEl.style.cssText = 'font-size:.85rem;color:var(--muted);line-height:1.7;margin-top:1rem;font-style:italic;';
+  commentEl.textContent = d.els.comment;
+  document.getElementById('elsStrands').after(commentEl);
+
+  document.getElementById('strengthsList').innerHTML = d.strengths.map(s => `
+    <div class="strength-item">
+      <div class="strength-icon">${s.icon}</div>
+      <div class="strength-text"><strong>${s.title}</strong>${s.text}</div>
+    </div>`).join('');
+
+  document.getElementById('questsList').innerHTML = d.quests.map((q,i) => `
+    <div class="quest-item">
+      <div class="quest-num">${i+1}</div>
+      <div class="quest-text"><strong>${q.title}</strong>${q.text}</div>
+    </div>`).join('');
+
+  document.getElementById('funGrid').innerHTML = d.fun.map(f => `
+    <div class="fun-card">
+      <span class="fun-emoji">${f.emoji}</span>
+      <div class="fun-stat">${f.stat}</div>
+      <div class="fun-desc">${f.desc}</div>
+    </div>`).join('');
+
+  if (radarChartInstance) { radarChartInstance.destroy(); radarChartInstance = null; }
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  radarChartInstance = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: d.radar.labels,
+      datasets: [
+        {
+          label: '1-й триместр',
+          data: d.radar.t1,
+          backgroundColor: 'rgba(255,255,255,0.05)',
+          borderColor: 'rgba(255,255,255,0.3)',
+          pointBackgroundColor: 'rgba(255,255,255,0.3)',
+          pointRadius: 3,
+        },
+        {
+          label: '2-й триместр',
+          data: d.radar.t2,
+          backgroundColor: d.color + '30',
+          borderColor: d.color,
+          pointBackgroundColor: d.color,
+          pointRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      animation: { duration: 1000 },
+      scales: {
+        r: {
+          min: 0, max: 100,
+          grid: { color: 'rgba(255,255,255,0.08)' },
+          angleLines: { color: 'rgba(255,255,255,0.08)' },
+          ticks: { display: false },
+          pointLabels: { color: 'rgba(240,239,245,0.6)', font: { family: 'DM Sans', size: 11 } }
+        }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  document.getElementById('radarLegend').innerHTML = `
+    <div class="radar-leg-item"><span class="radar-dot" style="background:rgba(255,255,255,0.3)"></span>Результат 1-го триместра</div>
+    <div class="radar-leg-item"><span class="radar-dot" style="background:${d.color}"></span>Результат 2-го триместра</div>
+    ${d.radar.labels.map((l,i) => `<div class="radar-leg-item" style="font-size:.75rem;color:var(--muted);">${l}: <span style="color:${d.color};font-weight:500;">${d.radar.t2[i]}%</span></div>`).join('')}
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  setTimeout(() => {
+    document.querySelectorAll('.prog-fill-t2[data-target]').forEach(el => {
+      el.style.width = el.dataset.target + '%';
+    });
+    document.querySelectorAll('.subj-bar[data-target]').forEach(el => {
+      el.style.width = el.dataset.target;
+    });
+  }, 200);
+
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.nav-tab').classList.add('active');
+}
+
+function goBack() {
+  document.getElementById('report').classList.remove('visible');
+  document.getElementById('landing').style.display = 'flex';
+  if (radarChartInstance) { radarChartInstance.destroy(); radarChartInstance = null; }
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function scrollTo2(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
