@@ -4,168 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shliakhtin Family · School Reports 2025–26</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ff-head: 'Syne', sans-serif;
-  --ff-body: 'DM Sans', sans-serif;
   --bg: #0e0e12;
   --surface: #17171d;
-  --surface2: #1f1f28;
-  --border: rgba(255,255,255,0.07);
-  --text: #f0eff5;
-  --muted: rgba(240,239,245,0.45);
+  --surface2: #1f1f27;
+  --border: #2a2a33;
+  --text: #e8e8ec;
+  --muted: #8b8b96;
+  --ff-head: 'Unbounded', system-ui, sans-serif;
+  --ff-body: 'Manrope', system-ui, sans-serif;
   --sofiia-h: #a78bfa;
-  --sofiia-l: #7c3aed;
-  --sofiia-glow: rgba(167,139,250,0.18);
   --mark-h: #34d399;
-  --mark-l: #059669;
-  --mark-glow: rgba(52,211,153,0.18);
   --maiia-h: #fb923c;
-  --maiia-l: #ea580c;
-  --maiia-glow: rgba(251,146,60,0.18);
-  --active-h: var(--sofiia-h);
-  --active-l: var(--sofiia-l);
-  --active-glow: var(--sofiia-glow);
+  --gold: #fbbf24;
+  --good: #4ade80;
+  --blue: #60a5fa;
+  --warn: #f87171;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
 body {
-  font-family: var(--ff-body);
   background: var(--bg);
   color: var(--text);
+  font-family: var(--ff-body);
+  line-height: 1.6;
   min-height: 100vh;
-  overflow-x: hidden;
 }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--ff-body); }
+:focus-visible { outline: 2px solid var(--active-h, var(--blue)); outline-offset: 2px; border-radius: 4px; }
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switch {
+  position: fixed;
+  top: .9rem;
+  right: 1rem;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .4rem .95rem;
+  font-size: .8rem;
+  font-weight: 600;
+  transition: border-color .2s, transform .2s;
+}
+.lang-switch:hover { border-color: var(--muted); transform: translateY(-1px); }
+.lang-switch .flag { font-size: 1rem; line-height: 1; }
 
 /* ── LANDING ── */
-#landing {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-#landing::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(167,139,250,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(52,211,153,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 35% at 60% 20%, rgba(251,146,60,0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-.landing-year {
-  font-family: var(--ff-head);
-  font-size: 11px;
-  letter-spacing: .25em;
-  color: var(--muted);
+#landing { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem 4rem; }
+#landing.hidden { display: none; }
+.landing-eyebrow {
+  font-size: .75rem;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  animation: fadeUp .6s ease both;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
 }
 .landing-title {
   font-family: var(--ff-head);
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 6vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.05;
-  text-align: center;
-  margin-bottom: .6rem;
-  animation: fadeUp .7s .1s ease both;
+  line-height: 1.1;
+  margin-bottom: .9rem;
 }
-.landing-title span {
-  background: linear-gradient(135deg, #a78bfa, #34d399, #fb923c);
+.landing-title .grad {
+  background: linear-gradient(90deg, #a78bfa, #34d399 50%, #fb923c);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
-.landing-sub {
-  font-size: 1rem;
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 3.5rem;
-  font-weight: 300;
-  animation: fadeUp .7s .2s ease both;
-}
-.child-cards {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  animation: fadeUp .7s .3s ease both;
-}
+.landing-sub { color: var(--muted); font-size: 1rem; margin-bottom: 3rem; }
+.child-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
 .child-card {
-  width: 220px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 2rem 1.5rem 1.75rem;
-  background: var(--surface);
-  cursor: pointer;
-  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 2rem 1.6rem;
   text-align: center;
+  cursor: pointer;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
 }
-.child-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity .3s ease;
-}
-.child-card[data-child="sofiia"]::before { background: var(--sofiia-glow); }
-.child-card[data-child="mark"]::before   { background: var(--mark-glow); }
-.child-card[data-child="maiia"]::before  { background: var(--maiia-glow); }
-.child-card:hover { transform: translateY(-6px); }
-.child-card[data-child="sofiia"]:hover { border-color: var(--sofiia-h); box-shadow: 0 20px 60px var(--sofiia-glow); }
-.child-card[data-child="mark"]:hover   { border-color: var(--mark-h);   box-shadow: 0 20px 60px var(--mark-glow); }
-.child-card[data-child="maiia"]:hover  { border-color: var(--maiia-h);  box-shadow: 0 20px 60px var(--maiia-glow); }
-.child-card:hover::before { opacity: 1; }
+.child-card:hover { transform: translateY(-4px); }
+[data-child="sofiia"].child-card:hover { border-color: var(--sofiia-h); box-shadow: 0 12px 40px -18px var(--sofiia-h); }
+[data-child="mark"].child-card:hover   { border-color: var(--mark-h);   box-shadow: 0 12px 40px -18px var(--mark-h); }
+[data-child="maiia"].child-card:hover  { border-color: var(--maiia-h);  box-shadow: 0 12px 40px -18px var(--maiia-h); }
 .child-avatar {
-  width: 72px;
-  height: 72px;
+  width: 72px; height: 72px;
   border-radius: 50%;
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--ff-head);
-  font-size: 1.5rem;
-  font-weight: 800;
-  position: relative;
+  margin: 0 auto 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-head); font-size: 1.4rem; font-weight: 800;
 }
 [data-child="sofiia"] .child-avatar { background: linear-gradient(135deg,#7c3aed,#a78bfa); color:#fff; }
 [data-child="mark"] .child-avatar   { background: linear-gradient(135deg,#059669,#34d399); color:#fff; }
 [data-child="maiia"] .child-avatar  { background: linear-gradient(135deg,#ea580c,#fb923c); color:#fff; }
-.child-name {
-  font-family: var(--ff-head);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: .25rem;
-}
+.child-name { font-family: var(--ff-head); font-size: 1.25rem; font-weight: 700; margin-bottom: .25rem; }
 [data-child="sofiia"] .child-name { color: var(--sofiia-h); }
 [data-child="mark"] .child-name   { color: var(--mark-h); }
 [data-child="maiia"] .child-name  { color: var(--maiia-h); }
 .child-year { font-size: .8rem; color: var(--muted); margin-bottom: 1.25rem; }
 .child-cta {
   display: inline-block;
-  font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .45rem 1rem;
-  border-radius: 999px;
+  font-size: .75rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: .45rem 1rem; border-radius: 999px;
   border: 1px solid currentColor;
   transition: background .2s, color .2s;
 }
 [data-child="sofiia"] .child-cta { color: var(--sofiia-h); }
 [data-child="mark"] .child-cta   { color: var(--mark-h); }
 [data-child="maiia"] .child-cta  { color: var(--maiia-h); }
-.child-card:hover [data-child="sofiia"] .child-cta,
 [data-child="sofiia"]:hover .child-cta { background: var(--sofiia-h); color: #fff; }
 [data-child="mark"]:hover .child-cta   { background: var(--mark-h);   color: #fff; }
 [data-child="maiia"]:hover .child-cta  { background: var(--maiia-h);  color: #fff; }
@@ -173,53 +133,27 @@ body {
 /* ── REPORT PAGE ── */
 #report { display: none; }
 #report.visible { display: block; }
-
-/* NAV */
 .report-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: rgba(14,14,18,0.85);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   padding: .75rem 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex; align-items: center; gap: 1rem;
 }
 .nav-back {
-  background: none;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  font-family: var(--ff-body);
-  font-size: .85rem;
-  display: flex;
-  align-items: center;
-  gap: .4rem;
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-size: .85rem; display: flex; align-items: center; gap: .4rem;
   transition: color .2s;
 }
 .nav-back:hover { color: var(--text); }
-.nav-name {
-  font-family: var(--ff-head);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--active-h);
-}
-.nav-tabs {
-  margin-left: auto;
-  display: flex;
-  gap: .25rem;
-}
+.nav-name { font-family: var(--ff-head); font-size: 1rem; font-weight: 700; color: var(--active-h); }
+.nav-tabs { margin-left: auto; display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; }
+.nav-tabs::-webkit-scrollbar { display: none; }
 .nav-tab {
-  background: none;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  font-family: var(--ff-body);
-  font-size: .8rem;
-  padding: .4rem .8rem;
-  border-radius: 8px;
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-size: .8rem; padding: .4rem .8rem; border-radius: 8px;
+  white-space: nowrap;
   transition: background .2s, color .2s;
 }
 .nav-tab:hover { background: var(--surface2); color: var(--text); }
@@ -228,859 +162,822 @@ body {
 /* HERO */
 .hero {
   padding: 4rem 2rem 3rem;
-  max-width: 960px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2.5rem;
-  align-items: center;
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center;
 }
 .hero-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--ff-head);
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #fff;
-  flex-shrink: 0;
-  position: relative;
+  width: 110px; height: 110px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-head); font-size: 2.5rem; font-weight: 800;
+  color: #fff; flex-shrink: 0; position: relative;
 }
 .hero-avatar::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid var(--active-h);
-  opacity: .5;
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid var(--active-h); opacity: .5;
 }
 .hero-sub { font-size: .85rem; color: var(--muted); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .1em; }
 .hero-name { font-family: var(--ff-head); font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; line-height: 1; margin-bottom: .75rem; color: var(--active-h); }
-.hero-quote { font-size: .95rem; color: var(--muted); font-style: italic; line-height: 1.6; max-width: 560px; }
+.hero-quote { font-size: .95rem; color: var(--muted); font-style: italic; max-width: 480px; }
+.hero-quote .who { display: block; font-style: normal; font-size: .78rem; margin-top: .35rem; }
 
 /* SECTIONS */
-.report-sections { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; }
-.section-block { margin-bottom: 3rem; animation: fadeUp .5s ease both; }
-.section-label {
-  font-family: var(--ff-head);
-  font-size: .7rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--active-h);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: .6rem;
+.section { max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem; }
+.section-title {
+  font-family: var(--ff-head); font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 1.6rem; color: var(--text);
 }
-.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-h2.section-title { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
-
-/* STAT ROW */
-.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: .75rem; margin-bottom: 1.5rem; }
-.stat-card {
+.section-title .num { color: var(--active-h); }
+.panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem 1rem;
-  transition: border-color .2s;
+  border-radius: 18px;
+  padding: 1.6rem;
 }
-.stat-card:hover { border-color: var(--active-h); }
-.stat-label { font-size: .75rem; color: var(--muted); margin-bottom: .4rem; }
-.stat-val { font-family: var(--ff-head); font-size: 1.8rem; font-weight: 800; color: var(--active-h); line-height: 1; }
-.stat-delta { font-size: .75rem; margin-top: .3rem; }
-.delta-up   { color: #34d399; }
-.delta-down { color: #f87171; }
-.delta-same { color: var(--muted); }
 
-/* SUBJECT GRID */
-.subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .75rem; }
-.subj-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.1rem 1.25rem;
-  transition: border-color .3s, transform .2s;
-  cursor: default;
+/* JOURNEY */
+.chart-wrap { width: 100%; overflow: hidden; }
+.chart-wrap svg { width: 100%; height: auto; display: block; }
+.legend { display: flex; flex-wrap: wrap; gap: .9rem 1.4rem; margin-top: 1rem; }
+.legend-item { display: flex; align-items: center; gap: .45rem; font-size: .8rem; color: var(--muted); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.journey-chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; margin-top: 1.25rem; }
+.jchip {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1rem 1.1rem;
 }
-.subj-card:hover { border-color: var(--active-h); transform: translateY(-2px); }
-.subj-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+.jchip .big { font-family: var(--ff-head); font-size: 1.05rem; font-weight: 700; color: var(--active-h); margin-bottom: .2rem; }
+.jchip .small { font-size: .78rem; color: var(--muted); }
+.att-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+.att-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.1rem; }
+.att-title { font-size: .78rem; color: var(--muted); margin-bottom: .6rem; }
+.att-bars { display: flex; align-items: flex-end; gap: .6rem; height: 58px; }
+.att-bar { flex: 1; display: flex; flex-direction: column; align-items: center; gap: .3rem; justify-content: flex-end; height: 100%; }
+.att-bar .bar { width: 100%; border-radius: 6px 6px 2px 2px; background: var(--active-h); opacity: .8; min-height: 3px; }
+.att-bar .n { font-size: .72rem; color: var(--text); font-weight: 700; }
+.att-bar .t { font-size: .66rem; color: var(--muted); }
+.att-note { font-size: .74rem; color: var(--muted); margin-top: .55rem; }
+
+/* SUBJECTS */
+.subject-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+.subject-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.25rem; display: flex; flex-direction: column; gap: .7rem;
+}
+.subj-head { display: flex; align-items: center; gap: .7rem; }
 .subj-icon { font-size: 1.4rem; }
-.subj-name { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; flex: 1; }
-.subj-grades { display: flex; gap: .4rem; align-items: center; }
-.grade-pill {
-  font-family: var(--ff-head);
-  font-size: .8rem;
-  font-weight: 700;
-  padding: .2rem .55rem;
-  border-radius: 6px;
-  background: var(--surface2);
-  color: var(--muted);
-  border: 1px solid var(--border);
+.subj-name { font-weight: 700; font-size: .95rem; flex: 1; }
+.subj-teacher { font-size: .72rem; color: var(--muted); }
+.subj-flag {
+  align-self: flex-start;
+  font-size: .68rem; font-weight: 700;
+  padding: .2rem .6rem; border-radius: 999px;
+  background: var(--surface2); border: 1px solid var(--border);
 }
-.grade-pill.t2 { background: var(--active-glow); color: var(--active-h); border-color: var(--active-h); }
-.arrow-grade { font-size: .8rem; color: var(--muted); }
-.subj-bar-wrap { height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
-.subj-bar { height: 4px; border-radius: 2px; transition: width 1s cubic-bezier(.16,1,.3,1); background: var(--active-h); }
-.subj-quote { font-size: .75rem; color: var(--muted); margin-top: .6rem; line-height: 1.5; font-style: italic; }
-
-/* ELS PATH */
-.els-path { display: flex; align-items: center; gap: 0; margin: 1.5rem 0; flex-wrap: wrap; }
-.els-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .4rem;
-  position: relative;
+.subj-flag.up { color: var(--good); border-color: rgba(74,222,128,.4); }
+.subj-flag.star { color: var(--gold); border-color: rgba(251,191,36,.4); }
+.subj-flag.watch { color: var(--warn); border-color: rgba(248,113,113,.4); }
+.subj-flag.steady { color: var(--blue); border-color: rgba(96,165,250,.4); }
+.subj-trend { display: flex; align-items: center; gap: .8rem; }
+.grade-chips { display: flex; align-items: center; gap: .35rem; font-family: var(--ff-head); font-size: .92rem; font-weight: 700; }
+.grade-chips .arrow { color: var(--muted); font-family: var(--ff-body); font-weight: 400; font-size: .8rem; }
+.grade-chips .g:last-child { color: var(--active-h); }
+.spark { flex-shrink: 0; }
+.badge-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+.badge {
+  font-size: .66rem; font-weight: 600;
+  padding: .18rem .55rem; border-radius: 999px;
+  background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
 }
-.els-circle {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--ff-head);
-  font-size: .85rem;
-  font-weight: 700;
-  color: var(--muted);
-  background: var(--surface);
-  transition: all .4s ease;
-  position: relative;
-  z-index: 1;
-}
-.els-circle.done {
-  border-color: var(--active-h);
-  background: var(--active-glow);
-  color: var(--active-h);
-}
-.els-circle.current {
-  border-color: var(--active-h);
-  background: var(--active-h);
-  color: #fff;
-  box-shadow: 0 0 24px var(--active-glow);
-}
-.els-label { font-size: .7rem; color: var(--muted); text-align: center; max-width: 70px; }
-.els-label.done, .els-label.current { color: var(--active-h); }
-.els-connector {
-  flex: 1;
-  height: 2px;
-  background: var(--border);
-  min-width: 30px;
-  max-width: 80px;
-  position: relative;
-  top: -16px;
-}
-.els-connector.done { background: var(--active-h); }
+.badge.b-exc { color: var(--gold); border-color: rgba(251,191,36,.35); }
+.badge.b-vg  { color: var(--good); border-color: rgba(74,222,128,.35); }
+.badge.b-good{ color: var(--blue); border-color: rgba(96,165,250,.35); }
+.badge.b-sat { color: var(--muted); }
+.badge.b-na  { color: var(--warn); border-color: rgba(248,113,113,.35); }
+.subj-quote { font-size: .78rem; color: var(--muted); font-style: italic; border-left: 2px solid var(--border); padding-left: .7rem; }
 
 /* RADAR */
-.radar-wrap { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
-canvas.radar-canvas { max-width: 280px; max-height: 280px; }
-.radar-legend { display: flex; flex-direction: column; gap: .6rem; }
-.radar-leg-item { display: flex; align-items: center; gap: .6rem; font-size: .85rem; }
-.radar-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.radar-flex { display: grid; grid-template-columns: 1fr; gap: 1rem; justify-items: center; }
+.radar-flex svg { max-width: 460px; width: 100%; height: auto; }
+.radar-legend { display: flex; gap: 1.6rem; font-size: .8rem; color: var(--muted); }
 
-/* PROGRESS BARS */
-.progress-list { display: flex; flex-direction: column; gap: .85rem; }
-.prog-item { }
-.prog-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .35rem; }
-.prog-name { font-size: .9rem; font-weight: 500; }
-.prog-vals { font-size: .8rem; color: var(--muted); }
-.prog-track { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; position: relative; }
-.prog-fill-t1 { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: var(--surface2); border: 1px solid var(--muted); opacity: .5; transition: width 1.2s cubic-bezier(.16,1,.3,1); }
-.prog-fill-t2 { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: var(--active-h); transition: width 1.4s .2s cubic-bezier(.16,1,.3,1); }
+/* ENGLISH QUEST */
+.quest-path { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin: 1.2rem 0; }
+.quest-step {
+  flex: 1; min-width: 120px;
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 14px;
+  padding: .9rem .8rem; text-align: center; position: relative;
+}
+.quest-step.done { border-color: var(--active-h); }
+.quest-step.star { border-color: var(--gold); background: linear-gradient(135deg, var(--surface2), rgba(251,191,36,.08)); }
+.quest-step .icon { font-size: 1.3rem; margin-bottom: .3rem; }
+.quest-step .lab { font-weight: 700; font-size: .85rem; }
+.quest-step .sub { font-size: .68rem; color: var(--muted); margin-top: .15rem; }
+.quest-note { font-size: .85rem; color: var(--muted); }
+.quest-quote { margin-top: 1rem; font-size: .82rem; font-style: italic; color: var(--muted); border-left: 2px solid var(--active-h); padding-left: .8rem; }
+.quest-quote .who { display: block; font-style: normal; font-size: .72rem; margin-top: .3rem; }
 
-/* STRENGTHS / NEXT UP */
-.two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.info-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem;
+/* POWERS & QUESTS */
+.pq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.pq-col h3 { font-family: var(--ff-head); font-size: .95rem; margin-bottom: 1rem; }
+.pq-item {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1rem 1.1rem; margin-bottom: .8rem;
+  display: flex; gap: .8rem; align-items: flex-start;
 }
-.info-card-title { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; margin-bottom: 1rem; }
-.strength-item {
-  display: flex;
-  align-items: flex-start;
-  gap: .75rem;
-  margin-bottom: .85rem;
-  padding-bottom: .85rem;
-  border-bottom: 1px solid var(--border);
-}
-.strength-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.strength-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
-.strength-text { font-size: .85rem; line-height: 1.5; color: var(--muted); }
-.strength-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: .15rem; }
-.quest-item {
-  display: flex;
-  align-items: flex-start;
-  gap: .75rem;
-  margin-bottom: .85rem;
-  padding-bottom: .85rem;
-  border-bottom: 1px solid var(--border);
-}
-.quest-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.quest-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--active-glow);
-  border: 1px solid var(--active-h);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .7rem;
-  font-weight: 700;
-  color: var(--active-h);
-  flex-shrink: 0;
-}
-.quest-text { font-size: .85rem; line-height: 1.5; color: var(--muted); }
-.quest-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: .15rem; }
+.pq-item .icon { font-size: 1.3rem; line-height: 1.3; }
+.pq-item .title { font-weight: 700; font-size: .88rem; margin-bottom: .15rem; }
+.pq-item .desc { font-size: .78rem; color: var(--muted); }
 
 /* FUN STATS */
-.fun-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: .75rem; }
+.fun-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.1rem; }
 .fun-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform .2s;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.4rem 1.2rem; text-align: center;
+  transition: transform .25s, border-color .25s;
 }
 .fun-card:hover { transform: translateY(-3px); border-color: var(--active-h); }
-.fun-emoji { font-size: 2rem; margin-bottom: .6rem; display: block; }
-.fun-stat { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 800; color: var(--active-h); margin-bottom: .3rem; }
-.fun-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.fun-big { font-family: var(--ff-head); font-size: 1.5rem; font-weight: 800; color: var(--active-h); margin-bottom: .4rem; }
+.fun-label { font-size: .78rem; color: var(--muted); }
 
-/* UTILS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* YEAR IN REVIEW */
+.yir-arc { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 1.1rem; margin-bottom: 1.25rem; }
+.yir-phase {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.3rem 1.2rem; position: relative;
 }
-.fade-in { animation: fadeUp .5s ease both; }
+.yir-tag {
+  display: inline-block; font-size: .64rem; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--active-h); margin-bottom: .6rem;
+}
+.yir-title { font-family: var(--ff-head); font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+.yir-text { font-size: .8rem; color: var(--muted); }
+.yir-forward {
+  border-radius: 18px; padding: 1.6rem;
+  border: 1px solid var(--active-h);
+  background: linear-gradient(135deg, var(--surface), var(--surface2));
+}
+.yir-forward .title { font-family: var(--ff-head); font-size: 1.05rem; font-weight: 800; margin-bottom: .6rem; }
+.yir-forward .text { font-size: .86rem; color: var(--muted); max-width: 640px; }
 
-/* TOGGLE LEGEND */
-.legend-row { display: flex; gap: 1.25rem; margin-bottom: 1rem; font-size: .8rem; color: var(--muted); align-items: center; }
-.leg-box { width: 12px; height: 12px; border-radius: 3px; }
-
-/* CHART CONTAINER */
-.chart-container { position: relative; width: 100%; }
+.footer { text-align: center; padding: 3rem 2rem 4rem; color: var(--muted); font-size: .75rem; }
 
 @media (max-width: 640px) {
-  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero { grid-template-columns: 1fr; text-align: center; gap: 1.4rem; }
   .hero-avatar { margin: 0 auto; }
   .hero-quote { margin: 0 auto; }
-  .two-col-grid { grid-template-columns: 1fr; }
-  .nav-tabs { display: none; }
-  .els-path { gap: 4px; }
-  .els-connector { min-width: 16px; }
+  .pq-grid { grid-template-columns: 1fr; }
+  .att-grid { grid-template-columns: 1fr; }
+  .report-nav { padding: .75rem 1rem; flex-wrap: wrap; }
+  .nav-tabs { width: 100%; margin-left: 0; }
+  #landing { padding: 4rem 1.25rem 3rem; }
+  .section { padding: 2rem 1.25rem; }
 }
-
-/* ── LANGUAGE SWITCHER ── */
-.lang-switch {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: .35rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: .35rem .6rem .35rem .5rem;
-  text-decoration: none;
-  font-family: var(--ff-body);
-  font-size: .78rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: border-color .2s, color .2s, box-shadow .2s;
-  backdrop-filter: blur(12px);
-  cursor: pointer;
-}
-.lang-switch:hover {
-  border-color: rgba(255,255,255,0.25);
-  color: var(--text);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-.lang-switch .flag { font-size: 1rem; line-height: 1; }
-.lang-switch .lang-label { letter-spacing: .04em; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════ LANGUAGE SWITCHER ══════════════ -->
 <a class="lang-switch" href="/ru/">
   <span class="flag">🇷🇺</span>
   <span class="lang-label">Русский</span>
 </a>
 
-<!-- ══════════════ LANDING ══════════════ -->
-<div id="landing">
-  <div class="landing-year">PBISS · School Year 2025–26</div>
-  <h1 class="landing-title"><span>Shliakhtin</span><br>Family Reports</h1>
-  <p class="landing-sub">Term 1 & Term 2 · Your journey, your data</p>
-  <div class="child-cards">
-    <div class="child-card" data-child="sofiia" onclick="showReport('sofiia')">
-      <div class="child-avatar">SF</div>
-      <div class="child-name">Sofiia</div>
-      <div class="child-year">Year 9 · IGCSE Track</div>
-      <span class="child-cta">View Report →</span>
-    </div>
-    <div class="child-card" data-child="mark" onclick="showReport('mark')">
-      <div class="child-avatar">MK</div>
-      <div class="child-name">Mark</div>
-      <div class="child-year">Year 8 · Lower Secondary</div>
-      <span class="child-cta">View Report →</span>
-    </div>
-    <div class="child-card" data-child="maiia" onclick="showReport('maiia')">
-      <div class="child-avatar">MA</div>
-      <div class="child-name">Maiia</div>
-      <div class="child-year">Year 6 · Primary</div>
-      <span class="child-cta">View Report →</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════ REPORT PAGE ══════════════ -->
+<div id="landing"></div>
 <div id="report">
   <nav class="report-nav">
-    <button class="nav-back" onclick="goBack()">← All reports</button>
-    <div class="nav-name" id="navName"></div>
-    <div class="nav-tabs">
-      <button class="nav-tab active" onclick="scrollTo2('journey')">Journey</button>
-      <button class="nav-tab" onclick="scrollTo2('subjects')">Subjects</button>
-      <button class="nav-tab" onclick="scrollTo2('english')">English</button>
-      <button class="nav-tab" onclick="scrollTo2('strengths')">Strengths</button>
-      <button class="nav-tab" onclick="scrollTo2('fun')">Fun Stats</button>
-    </div>
+    <button class="nav-back" id="navBack">←&nbsp;<span id="navBackLabel"></span></button>
+    <span class="nav-name" id="navName"></span>
+    <div class="nav-tabs" id="navTabs"></div>
   </nav>
+  <div id="reportContent"></div>
+</div>
 
-  <div class="hero">
-    <div class="hero-avatar" id="heroAvatar"></div>
-    <div>
-      <div class="hero-sub" id="heroSub"></div>
-      <div class="hero-name" id="heroName"></div>
-      <div class="hero-quote" id="heroQuote"></div>
-    </div>
-  </div>
-
-  <div class="report-sections">
-
-    <!-- JOURNEY -->
-    <div class="section-block" id="journey">
-      <div class="section-label">01 · Your journey</div>
-      <div class="stat-row" id="statRow"></div>
-
-      <div class="legend-row">
-        <span style="display:flex;align-items:center;gap:.4rem;"><span class="leg-box" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)"></span>Term 1</span>
-        <span style="display:flex;align-items:center;gap:.4rem;"><span class="leg-box" id="leg2"></span>Term 2</span>
-      </div>
-      <div class="progress-list" id="progressList"></div>
-    </div>
-
-    <!-- SUBJECTS -->
-    <div class="section-block" id="subjects">
-      <div class="section-label">02 · Subject deep dive</div>
-      <div class="subj-grid" id="subjGrid"></div>
-    </div>
-
-    <!-- RADAR -->
-    <div class="section-block">
-      <div class="section-label">03 · Skills radar</div>
-      <div class="radar-wrap">
-        <div class="chart-container" style="width:280px;height:280px;flex-shrink:0">
-          <canvas id="radarChart" width="280" height="280"></canvas>
-        </div>
-        <div class="radar-legend" id="radarLegend"></div>
-      </div>
-    </div>
-
-    <!-- ENGLISH ELS -->
-    <div class="section-block" id="english">
-      <div class="section-label">04 · English quest</div>
-      <h2 class="section-title" id="elsTitle"></h2>
-      <div class="els-path" id="elsPath"></div>
-      <div id="elsStrands" style="margin-top:1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;"></div>
-    </div>
-
-    <!-- STRENGTHS + QUESTS -->
-    <div class="section-block" id="strengths">
-      <div class="section-label">05 · Superpowers & level up</div>
-      <div class="two-col-grid">
-        <div class="info-card">
-          <div class="info-card-title">⚡ Your superpowers</div>
-          <div id="strengthsList"></div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">🎯 Quests for next term</div>
-          <div id="questsList"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FUN STATS -->
-    <div class="section-block" id="fun">
-      <div class="section-label">06 · Fun stats</div>
-      <div class="fun-grid" id="funGrid"></div>
-    </div>
-
-  </div><!-- /report-sections -->
-</div><!-- /report -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-/* ══════════════════════════════════════════
-   DATA
-══════════════════════════════════════════ */
+const STR = {
+  eyebrow: "PBISS · School Year 2025–26",
+  h1: 'Shliakhtin <span class="grad">Family Reports</span>',
+  tagline: "Terms 1 · 2 · 3 — your full year, your data",
+  viewReport: "View Report →",
+  back: "All reports",
+  fullYear: "Full Year 2025–26",
+  terms: ["T1","T2","T3"],
+  tabs: [
+    {id:"journey", label:"Journey"},
+    {id:"subjects", label:"Subjects"},
+    {id:"radar", label:"Radar"},
+    {id:"english", label:"English"},
+    {id:"powers", label:"Strengths"},
+    {id:"fun", label:"Fun Stats"},
+    {id:"year", label:"Year in Review"}
+  ],
+  sec: {
+    journey: "Your journey across the year",
+    subjects: "Subject deep dive",
+    radar: "Skills radar: Term 1 vs Term 3",
+    english: "English quest",
+    powers: "Superpowers & level up",
+    fun: "Fun stats",
+    year: "Year in Review"
+  },
+  chips: { effort:"Effort", atl:"Attitude", exam:"Year-end exam", pred:"Predicted" },
+  att: { absent:"Days absent (per term)", late:"Days late (per term)" },
+  powersTitle: "⚡ Your superpowers",
+  questsTitle: "🎯 Quests for next year",
+  footer: "Made with ❤️ by the Shliakhtin family · PBISS 2025–26",
+  effortClassMap: {
+    "Excellent":"b-exc", "Very good":"b-vg", "Good":"b-good",
+    "Satisfactory":"b-sat", "Needs attention":"b-na"
+  }
+};
+
 const DATA = {
   sofiia: {
-    name: 'Sofiia', initials: 'SF', year: 'Year 9 · IGCSE Track',
-    color: '#a78bfa', glow: 'rgba(167,139,250,0.18)',
-    avatarGrad: 'linear-gradient(135deg,#7c3aed,#a78bfa)',
-    quote: '"Sofia is a thoughtful and creative student who brings originality and humour to her work. She produces good written responses and shows clear potential as a writer." — Mr. Melmoth',
-    stats: [
-      { label: 'English', val: 'A', delta: '↑ from B', dir: 'up' },
-      { label: 'Maths predicted', val: 'A', delta: 'Current B', dir: 'same' },
-      { label: 'STEM+', val: 'A*', delta: '↑ from B', dir: 'up' },
-      { label: 'Absence days', val: '5', delta: '+3 from T1', dir: 'down' },
-    ],
-    progress: [
-      { name:'English', t1:5, t2:6, max:8, t1l:'B', t2l:'A' },
-      { name:'Maths', t1:7, t2:5, max:8, t1l:'A*', t2l:'B' },
-      { name:'Biology', t1:5, t2:5, max:8, t1l:'B', t2l:'B' },
-      { name:'Chemistry', t1:4, t2:4, max:8, t1l:'C', t2l:'C' },
-      { name:'Physics', t1:3, t2:4, max:8, t1l:'D', t2l:'C' },
-      { name:'History', t1:4, t2:4, max:8, t1l:'C', t2l:'C' },
-      { name:'Sociology', t1:2, t2:3, max:8, t1l:'E', t2l:'D' },
-      { name:'Art', t1:3, t2:4, max:8, t1l:'D', t2l:'C' },
-      { name:'STEM+', t1:5, t2:7, max:8, t1l:'B', t2l:'A*' },
-    ],
+    initials: "SF",
+    name: "Sofiia",
+    year: "Year 9 · IGCSE Track",
+    quote: { text: "A creative and insightful student who brings originality and humour to the classroom.", who: "Mr Melmoth, English" },
+    scale: { min: 3, max: 8 },
+    attendance: {
+      absent: [2,3,1], absentNote: "10 days across the year — a strong record.",
+      late: [6,3,1], lateNote: "6 → 3 → 1: the punctuality trend is fixed. Almost perfect in Term 3!"
+    },
+    journey: {
+      opts: { min: 3, max: 8, letterTicks: true, aria: "Current grades per term across five subjects" },
+      lines: [
+        { label:"English", color:"#a78bfa", values:["B","A","A"] },
+        { label:"Mathematics", color:"#60a5fa", values:["A*","B","A"] },
+        { label:"Physics", color:"#f472b6", values:["D","C","C"] },
+        { label:"Sociology", color:"#fbbf24", values:["E","D","B"] },
+        { label:"Thai", color:"#4ade80", values:["C","C","A"] }
+      ],
+      chips: [
+        { big:"E → B", small:"Sociology made the biggest climb of the whole family — three grades in one year" },
+        { big:"88%", small:"Chemistry year-end exam — your best exam result of the year" },
+        { big:"Grade A", small:"History year-end exam — evidence, detail, structure: all there" }
+      ]
+    },
     subjects: [
-      { icon:'📖', name:'English & Lit', t1:'B', t2:'A', pct:75, quote:'Creative, original voice — keep reading English fiction!' },
-      { icon:'➗', name:'Mathematics', t1:'A*', t2:'B', pct:62, quote:'Outstanding problem-solver — challenge yourself with harder problems' },
-      { icon:'🧬', name:'Biology', t1:'B', t2:'B', pct:62, quote:'Infectious enthusiasm — master IGCSE command words for the top grade' },
-      { icon:'⚗️', name:'Chemistry', t1:'C', t2:'C', pct:50, quote:'Strong independent worker — consistent home revision is key' },
-      { icon:'⚡', name:'Physics', t1:'D', t2:'C', pct:50, quote:'Improving! Avoid distractions; keep up with home revision' },
-      { icon:'📜', name:'History', t1:'C', t2:'C', pct:50, quote:'Improved 10-mark answers — now extend detail to short answers too' },
-      { icon:'🌍', name:'Sociology', t1:'E', t2:'D', pct:37, quote:'Use more sociological vocabulary & organise your essay structure' },
-      { icon:'🎨', name:'Art & Design', t1:'D', t2:'C', pct:50, quote:'Grade climbed a full step — keep experimenting with new techniques!' },
-      { icon:'🔧', name:'STEM+', t1:'B', t2:'A*', pct:87, quote:'Top of class — exceeds grade level! Outstanding work.' },
-      { icon:'🌏', name:'Thai', t1:'C', t2:'C', pct:50, quote:'Motivated and confident; strengthen writing consistency' },
+      { icon:"📚", name:"English Language & Literature", teacher:"Ben Melmoth", vals:["B","A","A"], effort:"Good", atl:"Good", exam:"58% · C", pred:"A",
+        flag:{type:"up", label:"📈 Holding at A"},
+        quote:"She consistently produces strong written work and shows considerable promise as a writer." },
+      { icon:"➗", name:"Mathematics", teacher:"Petros Mwanza", vals:["A*","B","A"], effort:"Very good", atl:"Excellent", exam:"49% · C", pred:"A",
+        flag:{type:"up", label:"🔁 Bounced back to A"},
+        quote:"A consistent and hardworking student who has shown great potential in Mathematics." },
+      { icon:"🧬", name:"Biology", teacher:"Chris Wood", vals:["B","B","B"], effort:"Very good", atl:"Very good", exam:"60%", pred:"A*",
+        flag:{type:"steady", label:"⚖️ Steady at B, aiming A*"},
+        quote:"Sofiia showed the most confidence with osmosis in plant cells." },
+      { icon:"⚗️", name:"Chemistry", teacher:"Stephanie Nonato", vals:["C","C","B"], effort:"Very good", atl:"Very good", exam:"88% ⭐", pred:"A",
+        flag:{type:"star", label:"⭐ Exam of the year"},
+        quote:"Sofiia has achieved an excellent result in Chemistry and shown secure knowledge across the paper." },
+      { icon:"🔭", name:"Physics", teacher:"Richel Maglunsod", vals:["D","C","C"], effort:"Very good", atl:"Very good", exam:"84%", pred:"B",
+        flag:{type:"up", label:"📈 Climbed from D"},
+        quote:"Strongest understanding of force, impulse and gravitational potential energy." },
+      { icon:"🏛️", name:"History", teacher:"Samir Serrano", vals:["C","C","C"], effort:"Excellent", atl:"Excellent", exam:"Grade A ⭐",
+        flag:{type:"star", label:"⭐ Exam ace"},
+        quote:"Sofiia has made sure that she uses evidence to back up her points, explaining them in detail." },
+      { icon:"👥", name:"Sociology", teacher:"Olivia Kidd", vals:["E","D","B"], effort:"Very good", atl:"Very good", exam:"Grade B", pred:"C",
+        flag:{type:"star", label:"🚀 Biggest climb: +3 grades"},
+        quote:"Her long-answer essay was of an excellent quality, exhibiting sharp critical thinking." },
+      { icon:"🎨", name:"Art & Design", teacher:"Caroline Flinders", vals:["D","C","C"], effort:"Excellent", atl:"Excellent", exam:"45%", pred:"C",
+        flag:{type:"up", label:"📈 Confidence growing"},
+        quote:"Her practical outcomes have become increasingly confident and successful." },
+      { icon:"🤖", name:"STEM+", teacher:"Peter Guagliano", vals:["B","A*","B"], effort:"Very good", atl:"Good", exam:"79/100 · B",
+        flag:{type:"steady", label:"⚖️ Exceeding expectations"},
+        quote:"She has done outstanding work and is demonstrating a good understanding of STEM topics." },
+      { icon:"🇹🇭", name:"Thai (Non-native)", teacher:"Kru Ben", vals:["C","C","A"], effort:"Very good", atl:"Good", exam:"69% · C",
+        flag:{type:"up", label:"📈 Level up to A"},
+        quote:"A particular strength in her writing — neat, well-presented written tasks." }
     ],
     radar: {
-      labels: ['English', 'Maths', 'Sciences', 'Humanities', 'STEM+', 'Arts'],
-      t1: [62, 87, 45, 47, 62, 37],
-      t2: [75, 62, 54, 50, 87, 50],
+      max: 8,
+      axes: ["English","Maths","Biology","Chemistry","Physics","Sociology"],
+      t1: ["B","A*","B","C","D","E"],
+      t3: ["A","A","B","B","C","B"]
     },
-    els: {
-      title: 'Not in ELS — already in mainstream English',
-      nodes: [
-        { label:'Level 3', status:'done' },
-        { label:'Level 2', status:'done' },
-        { label:'Level 1', status:'done' },
-        { label:'Mainstream ✓', status:'current' },
+    english: {
+      intro: "Sofiia doesn't need language support — she's on the full IGCSE English track, studying Language and Literature in her second language. Here's her current grade across the year:",
+      path: [
+        { icon:"✍️", label:"B", sub:"Term 1 · strong start", state:"done" },
+        { icon:"📖", label:"A", sub:"Term 2 · originality & humour", state:"done" },
+        { icon:"🏆", label:"A", sub:"Term 3 · predicted A for IGCSE", state:"star" }
       ],
-      strands: [
-        { name:'Listening', t1:'—', t2:'Mainstream' },
-        { name:'Reading', t1:'—', t2:'Mainstream' },
-        { name:'Speaking', t1:'—', t2:'Mainstream' },
-        { name:'Writing', t1:'—', t2:'Mainstream' },
-      ],
-      comment: 'Sofiia was never in ELS — she entered PBISS already operating in mainstream English. Her teacher notes she writes with originality and humour, and should now focus on reading English fiction to deepen language instincts.',
+      note: "One quest remains: the year-end exam came out at 58% (C) — not because of knowledge, but exam nerves and answering technique. The next level: think directly in English, answer every question, and let the exams show what the classroom already knows.",
+      quote: { text:"As her confidence in English continues to grow, I would like to see her rely less on direct translation and instead focus on expressing her ideas naturally in English.", who:"Mr Melmoth, English" }
     },
-    strengths: [
-      { icon:'🧮', title:'Advanced mathematician', text:'Predicted A, was A* in T1 — your maths thinking is genuinely advanced.' },
-      { icon:'✍️', title:'Creative writer', text:'Teachers call your ideas "unique" and "original" — rare at IGCSE level.' },
-      { icon:'🔧', title:'STEM superstar', text:'A* in STEM+ — you beat your own grade-level expectations.' },
+    powers: [
+      { icon:"✨", title:"Original mind", desc:"Creativity, insight and humour — teachers across subjects mention your original ideas and strong writing." },
+      { icon:"🧗", title:"The comeback climber", desc:"Sociology E → B, Physics D → C, Chemistry C → B. When something starts low, you climb. Every time." },
+      { icon:"🔥", title:"Double Excellent ×2", desc:"History and Art both gave you Excellent for effort AND attitude in Term 3 — the top rating twice over." }
     ],
     quests: [
-      { title:'Fix Physics', text:'You went D→C. Next step is B. One hour of home revision per week makes a difference.' },
-      { title:'Crack IGCSE exam language', text:'Biology & Chemistry have specific command words. Learn them — they\'re worth marks.' },
-      { title:'Read English fiction', text:'Your writing gets better when you read more. Even 20 mins a night counts.' },
-      { title:'Punctuality', text:'9 lates in T2. Arriving on time means you catch the key ideas every lesson.' },
+      { icon:"🎯", title:"Master the exam game", desc:"Read every question, answer every question, watch the clock. Your knowledge is already A-level — let the exam paper see it too." },
+      { icon:"💭", title:"Think in English", desc:"Drop the translation step. Read fiction with great dialogue and write the way you speak — your natural voice is your strength." },
+      { icon:"🔬", title:"Seneca, little and often", desc:"Short retrieval practice each week in Biology, Chemistry and Physics keeps Year 9 knowledge warm for next year's science." }
     ],
     fun: [
-      { emoji:'🏆', stat:'A*', desc:'Your STEM+ grade — the highest possible' },
-      { emoji:'📈', stat:'+2 grades', desc:'Sociology improved from E to D. That\'s two full steps!' },
-      { emoji:'⚡', stat:'#1', desc:'You\'re the top English performer in the family' },
-      { emoji:'🌟', stat:'Predicted A', desc:'Your teachers believe you\'re heading for an A in English' },
-      { emoji:'🔬', stat:'A*', desc:'Biology predicted — you have the talent, now the technique' },
-      { emoji:'🎨', stat:'D→C', desc:'Art climbed a full grade in one term' },
+      { big:"88%", label:"Chemistry exam — best exam score in the family this year" },
+      { big:"E → B", label:"Sociology: the single biggest subject climb of all three kids" },
+      { big:"11", label:"subjects studied this year — 9 IGCSE + STEM+ + Thai" },
+      { big:"6→3→1", label:"late days per term — punctuality quest: completed" }
     ],
+    yir: {
+      phases: [
+        { tag:"The start", title:"Nine IGCSE subjects. In English.", text:"September: a full IGCSE load in a second language, with grades like D in Physics and E in Sociology showing just how steep the hill was. She kept every 'Very good' effort mark from day one." },
+        { tag:"The climb", title:"The grades caught up with the effort", text:"By spring, English hit A and stayed there. Sociology jumped two grades. Maths recovered to A after a dip. Teachers stopped writing about potential and started writing about results." },
+        { tag:"Ready", title:"An A-track student — with one boss level left", text:"Term 3: predicted A in English and Maths, 88% in Chemistry, an A on the History exam. The only gap left is exam technique under pressure — a skill, not a limit. Skills can be trained." }
+      ],
+      forward: {
+        title:"What she takes with her 🚀",
+        text:"Her IGCSE year is her passport: she's proven she can perform at the top of a rigorous international curriculum in her second language. Wherever the next classroom is, it gets a student who already knows how to climb."
+      }
+    }
   },
 
   mark: {
-    name: 'Mark', initials: 'MK', year: 'Year 8 · Lower Secondary',
-    color: '#34d399', glow: 'rgba(52,211,153,0.18)',
-    avatarGrad: 'linear-gradient(135deg,#059669,#34d399)',
-    quote: '"Mark is an intelligent student who demonstrates a natural aptitude for programming and grasps new concepts well." — Mr. Cox (Computing)',
-    stats: [
-      { label: 'Computing', val: '5/5', delta: 'Excellent both terms', dir: 'up' },
-      { label: 'STEM+', val: '6', delta: '↑ from 4.2 — above grade', dir: 'up' },
-      { label: 'Science jump', val: '1.3→2.9', delta: 'Biggest leap!', dir: 'up' },
-      { label: 'Days late', val: '0', delta: 'Perfect punctuality', dir: 'up' },
-    ],
-    progress: [
-      { name:'English', t1:3.2, t2:3.3, max:6, t1l:'3.2', t2l:'3.3' },
-      { name:'Maths', t1:2.8, t2:2.6, max:6, t1l:'2.8', t2l:'2.6' },
-      { name:'Science', t1:1.3, t2:2.9, max:6, t1l:'1.3', t2l:'2.9' },
-      { name:'Computing', t1:5, t2:5, max:6, t1l:'5', t2l:'5' },
-      { name:'STEM+', t1:4.2, t2:6, max:6, t1l:'4.2', t2l:'6' },
-      { name:'Geography', t1:2.5, t2:3.3, max:6, t1l:'2.5', t2l:'3.3' },
-      { name:'History', t1:3, t2:2.6, max:6, t1l:'3.0', t2l:'2.6' },
-      { name:'Chinese', t1:4.5, t2:4.5, max:6, t1l:'4.5', t2l:'4.5' },
-      { name:'Thai', t1:3.3, t2:3.5, max:6, t1l:'3.3', t2l:'3.5' },
-    ],
+    initials: "MK",
+    name: "Mark",
+    year: "Year 8 · Lower Secondary",
+    quote: { text: "Since transitioning from ESL support, he has produced great work and adapted brilliantly to the mainstream curriculum.", who: "Ms Kidd, Geography" },
+    scale: { min: 1, max: 6 },
+    attendance: {
+      absent: [4,2,2], absentNote: "8 days across the year, and fewer each term.",
+      late: [0,0,1], lateNote: "Just 1 late day in the entire year. Reliability: confirmed."
+    },
+    journey: {
+      opts: { min: 1, max: 6, aria: "Core subject grades per term" },
+      lines: [
+        { label:"English", color:"#34d399", values:[3.2,3.3,4.2] },
+        { label:"Mathematics", color:"#60a5fa", values:[2.8,2.6,5.2] },
+        { label:"Science", color:"#fbbf24", values:[1.3,2.9,3.0] }
+      ],
+      chips: [
+        { big:"+2.6", small:"Maths classwork jump in Term 3 — the biggest single-term leap in the family" },
+        { big:"ELS: done", small:"Level 3 → 2 → 1 → mainstream, a full graduation in one year" },
+        { big:"1.3 → 3.0", small:"Science more than doubled from Term 1 to Term 3" }
+      ]
+    },
     subjects: [
-      { icon:'💻', name:'Computing', t1:'5', t2:'5', pct:83, quote:'Natural aptitude for Python — keep submitting assignments!' },
-      { icon:'🔧', name:'STEM+', t1:'4.2', t2:'6', pct:100, quote:'Above grade level! Your best subject — technical genius!' },
-      { icon:'🇨🇳', name:'Chinese', t1:'4.5', t2:'4.5', pct:75, quote:'Consistent excellence — friendly and attentive in class' },
-      { icon:'📖', name:'English', t1:'3.2', t2:'3.3', pct:55, quote:'Good hero\'s journey analysis — keep reading and raising IXL score' },
-      { icon:'➗', name:'Mathematics', t1:'2.8', t2:'2.6', pct:43, quote:'Effort needs a boost — attention to detail will unlock more marks' },
-      { icon:'🔬', name:'Science', t1:'1.3', t2:'2.9', pct:48, quote:'Biggest jump in the family! More active in group work now — keep it up!' },
-      { icon:'🗺️', name:'Geography', t1:'2.5', t2:'3.3', pct:55, quote:'"Amazing improvement" — teacher\'s own words. Well done!' },
-      { icon:'📜', name:'History', t1:'3.0', t2:'2.6', pct:43, quote:'Use more evidence in written answers — explain your thinking more' },
-      { icon:'🌏', name:'Thai', t1:'3.3', t2:'3.5', pct:58, quote:'Respectful, dedicated — minor spelling errors to work on' },
-      { icon:'🎵', name:'Music', t1:'2.8', t2:'2.6', pct:43, quote:'Positive energy in class — focus more during activities' },
+      { icon:"📚", name:"English", teacher:"Ben Melmoth", vals:[3.2,3.3,4.2], effort:"Satisfactory", atl:"Satisfactory", exam:"29% ⚠️",
+        flag:{type:"watch", label:"📈 Classwork up · exam gap"},
+        quote:"A reserved, yet attentive and hardworking student who has improved his overall English level." },
+      { icon:"➗", name:"Mathematics", teacher:"Petros Mwanza", vals:[2.8,2.6,5.2], effort:"Good", atl:"Good", exam:"26% ⚠️",
+        flag:{type:"watch", label:"🚀 Record jump · exam gap"},
+        quote:"He has shown potential in Mathematics… concentration is key to his success." },
+      { icon:"🔬", name:"Science", teacher:"Stephanie Nonato", vals:[1.3,2.9,3.0], effort:"Good", atl:"Good", exam:"44%",
+        flag:{type:"up", label:"📈 More than doubled"},
+        quote:"Mark's strongest areas were concentration of solutions, solubility of salts and the breathing investigation." },
+      { icon:"💻", name:"Computing", teacher:"Salman Shariff", vals:[5,5,4.5], effort:"Excellent", atl:"Excellent", exam:"36% (mock)",
+        flag:{type:"star", label:"⭐ Strongest subject"},
+        quote:"A positive attitude and a sound foundational knowledge of computer systems." },
+      { icon:"🤖", name:"STEM+", teacher:"Peter Guagliano", vals:[4.2,6,4.8], effort:"Very good", atl:"Very good", exam:"76/100 · 4.8",
+        flag:{type:"star", label:"⭐ Natural technical ability"},
+        quote:"Mark demonstrates a natural ability in technical subjects." },
+      { icon:"🌍", name:"Geography", teacher:"Olivia Kidd", vals:[2.5,3.3,4.0], effort:"Excellent", atl:"Excellent",
+        flag:{type:"star", label:"🚀 Post-ESL star"},
+        quote:"An excellent student who is a pleasure to teach… his determination is commendable." },
+      { icon:"🏛️", name:"History", teacher:"Samir Serrano", vals:[3,2.6,2.7], effort:"Very good", atl:"Very good", exam:"Grade D",
+        flag:{type:"watch", label:"👀 Capable of more"},
+        quote:"Mark explains his answers well and has shown excellent knowledge retention… I believe Mark is capable of much more." },
+      { icon:"🇹🇭", name:"Thai (Non-native)", teacher:"Kru Ice", vals:[3.3,3.5,3.6], effort:"Excellent", atl:"Excellent", exam:"54% · 3.5",
+        flag:{type:"up", label:"📈 Steady climb"},
+        quote:"A hardworking and dedicated student who shows a positive attitude toward learning." },
+      { icon:"🀄", name:"Chinese", teacher:"Jing Lin", vals:[4.5,4.5,4.6], effort:"Excellent", atl:"Excellent",
+        flag:{type:"steady", label:"⚖️ Consistently strong"},
+        quote:"Mark is such a smart student that he should continue to do well." },
+      { icon:"⚽", name:"PE", teacher:"Jaymes Nelson", vals:[3.3,3.3,3.3], effort:"Very good", atl:"Very good",
+        flag:{type:"steady", label:"⚖️ Reliable team player"},
+        quote:"A reliable team player with a good understanding of the game." },
+      { icon:"🎨", name:"Art", teacher:"Caroline Flinders", vals:[2.5,2.0,2.6], effort:"Good", atl:"Very good",
+        flag:{type:"up", label:"🔁 Recovered after ESL clashes"},
+        quote:"He works well when focused and responds positively to guidance and feedback." },
+      { icon:"🎵", name:"Music", teacher:"Kru Noom", vals:[2.8,2.6,2.6], effort:"Satisfactory", atl:"Satisfactory",
+        flag:{type:"watch", label:"👀 Attitude up, deadlines next"},
+        quote:"Mark has shown some great growth in his attitude toward learning this term, which is a big win." }
     ],
     radar: {
-      labels: ['Computing', 'STEM+', 'Languages', 'Sciences', 'Humanities', 'English'],
-      t1: [83, 70, 65, 22, 46, 53],
-      t2: [83, 100, 67, 48, 50, 55],
+      max: 6,
+      axes: ["English","Maths","Science","Computing","Geography","Chinese"],
+      t1: [3.2,2.8,1.3,5,2.5,4.5],
+      t3: [4.2,5.2,3.0,4.5,4.0,4.6]
     },
-    els: {
-      title: 'ELS journey: Level 3 → Level 2 → Level 1 next term',
-      nodes: [
-        { label:'Level 3 T1', status:'done' },
-        { label:'Level 2 T2', status:'done' },
-        { label:'Level 1 T3', status:'current' },
-        { label:'Graduate!', status:'future' },
+    english: {
+      intro: "Mark's English quest was the fastest in the family: three ELS levels cleared in a single year.",
+      path: [
+        { icon:"🌱", label:"Level 3", sub:"Term 1 · exceptional progress", state:"done" },
+        { icon:"📗", label:"Level 2", sub:"Term 2 · finding his voice", state:"done" },
+        { icon:"📘", label:"Level 1", sub:"in-class support only", state:"done" },
+        { icon:"🎓", label:"Mainstream", sub:"Term 3 · no ELS pages left in the report", state:"star" }
       ],
-      strands: [
-        { name:'Listening', t1:'Developing', t2:'Competent' },
-        { name:'Reading', t1:'Fluent', t2:'Competent' },
-        { name:'Speaking', t1:'Fluent', t2:'Competent' },
-        { name:'Writing', t1:'Developing', t2:'Competent' },
-      ],
-      comment: 'Mark moved from Level 3 to Level 2 in T1, and will move to Level 1 (in-class support only) next term. His ELS teacher says he\'s made "exceptional progress" and has strong critical-thinking skills. He now answers more questions and contributes actively to discussions.',
+      note: "English classwork rose 3.2 → 3.3 → 4.2 while reading The Hunger Games in the original. The next boss: exams. A 29% year-end score and a 'Basic' Cambridge band don't measure what Mark knows — they measure that when a question is unclear, he leaves it blank. The quest for next year: ask, guess, attempt — never leave the page empty.",
+      quote: { text:"He has taken the initiative to answer more questions and contributes actively to class discussions.", who:"Ms Herbert, ELS" }
     },
-    strengths: [
-      { icon:'💻', title:'Natural programmer', text:'Computing Excellent both terms — your Python skills impress every teacher.' },
-      { icon:'🔧', title:'STEM genius', text:'Grade 6 in STEM+ — that means above grade level. You mastered 3D printing!' },
-      { icon:'⏰', title:'Perfect punctuality', text:'Zero late days all year. That shows real discipline and respect.' },
+    powers: [
+      { icon:"🛡️", title:"100% his own work", desc:"No shortcuts, no cheat sheets, ever. Every grade on this page is real. That independence is rarer and more valuable than any single mark." },
+      { icon:"🔧", title:"Engineer's brain", desc:"Computing 4.5–5, STEM+ up to 6/6, Chinese 4.6 — systems, logic and patterns are where Mark quietly outperforms everyone." },
+      { icon:"🎓", title:"ELS graduate in one year", desc:"Level 3 to full mainstream in three terms, with the Geography teacher calling his adaptation 'brilliant'. That was the family goal for the year — completed." }
     ],
     quests: [
-      { title:'Maths effort', text:'Only subject where effort dropped to "Needs Attention." Show your teachers what you\'re capable of.' },
-      { title:'Submit assignments on time', text:'Computing teacher says you have the talent — now make sure every task is submitted.' },
-      { title:'History writing', text:'Use more evidence in your answers. Explain WHY, not just WHAT happened.' },
-      { title:'Speak up more', text:'Geography teacher saw "amazing improvement" in T2. Keep contributing in group discussions — your ideas are good!' },
+      { icon:"🗣️", title:"Never leave a blank", desc:"When a question is confusing, ask the teacher, or write your best guess. A wrong attempt scores more than an empty box — on every exam, in every country." },
+      { icon:"📈", title:"Raise the bar past 'good enough'", desc:"'Learn to study in English' — done, ahead of schedule. The new game: show on exams what the classwork already proves. Maths classwork says 5.2; make the exam say it too." },
+      { icon:"⏰", title:"Ship it on time", desc:"Music was the one subject where late submissions cost real marks. Attitude is already up — pair it with deadlines and the grade follows." }
     ],
     fun: [
-      { emoji:'💻', stat:'Grade 6', desc:'STEM+ — the maximum grade. You literally can\'t do better!' },
-      { emoji:'🚀', stat:'+1.6', desc:'Science jumped 1.6 points — biggest single-term improvement in the family' },
-      { emoji:'⏰', stat:'0 lates', desc:'Not a single late day all year — you\'re never late!' },
-      { emoji:'🐍', stat:'Python', desc:'You can code: variables, loops, functions, conditionals. Real skills.' },
-      { emoji:'🖨️', stat:'3D Print', desc:'You designed and printed real objects in STEM+ this term' },
-      { emoji:'🇨🇳', stat:'4.5', desc:'Chinese — consistent all year. Two languages already!' },
+      { big:"+2.6", label:"Maths classwork jump in one term — family record" },
+      { big:"3 → 🎓", label:"ELS levels cleared in one year — fastest graduation possible" },
+      { big:"6/6", label:"STEM+ Term 2 — the only perfect score in the family this year" },
+      { big:"1", label:"late day all year. One." }
     ],
+    yir: {
+      phases: [
+        { tag:"The start", title:"The quiet observer", text:"September: Science at 1.3, ESL classes pulling him out of Art and Geography, and a boy who answered only when called on. But every teacher, from day one, used the same words: hardworking, respectful, does his best." },
+        { tag:"The climb", title:"Graduating while nobody watched", text:"Term by term he cleared ELS levels, doubled his Science grade, and started speaking up in group work. By Term 3, Geography called him 'excellent' and Maths classwork leapt to 5.2. The quiet kid built all of it himself — no shortcuts." },
+        { tag:"Ready", title:"One gap, clearly named", text:"The year ends with a single honest gap: exams don't yet show what classwork proves (26–29% vs grade 5 work). It's not ability and not effort — it's understanding the question and refusing to leave blanks. Trainable. Named. Next." }
+      ],
+      forward: {
+        title:"What he takes with him 🚀",
+        text:"Mark finishes the year in the mainstream — no language support needed, one year after arriving with ELS Level 3. He takes an engineer's mind, total academic honesty, and a completed mission: he learned how to study in English."
+      }
+    }
   },
 
   maiia: {
-    name: 'Maiia', initials: 'MA', year: 'Year 6 · Primary',
-    color: '#fb923c', glow: 'rgba(251,146,60,0.18)',
-    avatarGrad: 'linear-gradient(135deg,#ea580c,#fb923c)',
-    quote: '"Maiia is a thoughtful and capable student who demonstrates strong attention to detail in her work. Her handwriting is particularly neat and well presented." — ELS Teacher',
-    stats: [
-      { label: 'English jump', val: '2.1→3.1', delta: '+1.0 in one term!', dir: 'up' },
-      { label: 'Maths jump', val: '3.1→4.1', delta: '+1.0 → sound level', dir: 'up' },
-      { label: 'ELS next term', val: 'Level 1', delta: '3→2→1 in 2 terms', dir: 'up' },
-      { label: 'Absence days', val: '13', delta: '↑ from 7 in T1', dir: 'down' },
-    ],
-    progress: [
-      { name:'English', t1:2.1, t2:3.1, max:6, t1l:'2.1', t2l:'3.1' },
-      { name:'Mathematics', t1:3.1, t2:4.1, max:6, t1l:'3.1', t2l:'4.1' },
-      { name:'Science', t1:3.1, t2:3.7, max:6, t1l:'3.1', t2l:'3.7' },
-      { name:'ICT', t1:4.3, t2:4.8, max:6, t1l:'4.3', t2l:'4.8' },
-      { name:'STEM+', t1:4, t2:4, max:6, t1l:'4.0', t2l:'4.0' },
-      { name:'Chinese', t1:4.5, t2:4.5, max:6, t1l:'4.5', t2l:'4.5' },
-      { name:'Music', t1:4.5, t2:4.8, max:6, t1l:'4.5', t2l:'4.8' },
-      { name:'Thai', t1:3.5, t2:3.5, max:6, t1l:'3.5', t2l:'3.5' },
-      { name:'Art', t1:3.5, t2:3.6, max:6, t1l:'3.5', t2l:'3.6' },
-    ],
-    subjects: [
-      { icon:'🎵', name:'Music', t1:'4.5', t2:'4.8', pct:80, quote:'Real talent — you grew your grade and it shows!' },
-      { icon:'🇨🇳', name:'Chinese', t1:'4.5', t2:'4.5', pct:75, quote:'Consistent and excellent — two languages at once!' },
-      { icon:'💻', name:'ICT', t1:'4.3', t2:'4.8', pct:80, quote:'Effort improved from Satisfactory to Very Good — great progress!' },
-      { icon:'🔧', name:'STEM+', t1:'4.0', t2:'4.0', pct:67, quote:'Sound understanding — solid and consistent' },
-      { icon:'📖', name:'English', t1:'2.1', t2:'3.1', pct:52, quote:'Amazing jump — keep practising speaking in full sentences!' },
-      { icon:'➗', name:'Mathematics', t1:'3.1', t2:'4.1', pct:68, quote:'Strong fluency — next step is word problems!' },
-      { icon:'🔬', name:'Science', t1:'3.1', t2:'3.7', pct:62, quote:'Ecosystems: 4.5 — your best science topic!' },
-      { icon:'🌏', name:'Thai', t1:'3.5', t2:'3.5', pct:58, quote:'Confident asking questions — work on writing skills' },
-      { icon:'🎨', name:'Art', t1:'3.5', t2:'3.6', pct:60, quote:'Neat, careful work that clearly shows your ideas' },
-    ],
-    radar: {
-      labels: ['Music', 'Chinese', 'ICT', 'Maths', 'English', 'Science'],
-      t1: [75, 75, 72, 52, 35, 52],
-      t2: [80, 75, 80, 68, 52, 62],
+    initials: "MA",
+    name: "Maiia",
+    year: "Year 6 · Primary",
+    quote: { text: "She comes to school with a smile each day and is always keen to participate in lessons.", who: "Mr Miloszewski, Class Teacher" },
+    scale: { min: 1, max: 6 },
+    attendance: {
+      absent: [7,6,3], absentNote: "16 days total — but the trend bent the right way: 7 → 6 → 3.",
+      late: [0,0,0], lateNote: "Zero late days. All year. Family punctuality champion. 👑"
     },
-    els: {
-      title: 'ELS journey: fastest progress in the family!',
-      nodes: [
-        { label:'Level 3 T1', status:'done' },
-        { label:'Level 2 T2', status:'done' },
-        { label:'Level 1 T3', status:'current' },
-        { label:'Graduate!', status:'future' },
+    journey: {
+      opts: { min: 1, max: 6, aria: "Core subject grades per term" },
+      lines: [
+        { label:"English", color:"#fb923c", values:[2.1,3.1,3.6] },
+        { label:"Mathematics", color:"#60a5fa", values:[3.1,4.1,4.5] },
+        { label:"Science", color:"#4ade80", values:[3.1,3.7,3.8] }
       ],
-      strands: [
-        { name:'Listening', t1:'Early acquisition', t2:'Competent' },
-        { name:'Reading', t1:'Developing', t2:'Competent' },
-        { name:'Speaking', t1:'Developing', t2:'Competent' },
-        { name:'Writing', t1:'Developing', t2:'Competent' },
-      ],
-      comment: 'ALL four ELS strands jumped a full level in just one term! T1 teacher called you "one of the top-performing students in class." T2 teacher said your handwriting is "particularly neat and well presented." Next term you move to Level 1 — almost graduated from ELS entirely!',
-    },
-    strengths: [
-      { icon:'🚀', title:'Fastest English learner', text:'Level 3→2→1 in just two terms. Your teachers are amazed by your progress.' },
-      { icon:'🎵', title:'Musical talent', text:'4.8 in Music — one of your highest scores. You have a real gift.' },
-      { icon:'😊', title:'Social superstar', text:'Teacher said you formed friendships immediately and carry yourself with positivity around school.' },
-    ],
-    quests: [
-      { title:'Attend every day', text:'13 absence days this year. Each day you\'re at school, your English gets stronger. Try not to miss!' },
-      { title:'Word problems in Maths', text:'You\'re great at calculations — now practise reading and solving story problems in English.' },
-      { title:'Speak in full sentences', text:'Your ELS teacher\'s top tip: practise speaking in full sentences at home, every day.' },
-      { title:'Read for 20 minutes daily', text:'Reading books (even easy ones!) will boost your English faster than anything else.' },
-    ],
-    fun: [
-      { emoji:'🚀', stat:'3 levels', desc:'ELS Level 3→2→1 in just two terms — fastest in the family!' },
-      { emoji:'🎵', stat:'4.8', desc:'Music is your highest score — almost a 5!' },
-      { emoji:'➗', stat:'+1.0', desc:'Maths jumped a full point in one term. That\'s huge.' },
-      { emoji:'📖', stat:'+1.0', desc:'English also jumped a full point. Double achievement!' },
-      { emoji:'😊', stat:'Top 🌟', desc:'ELS teacher called you one of the top students in class' },
-      { emoji:'✍️', title:'Neatest', desc:'Your handwriting was specially praised by your teacher' },
-    ],
-  },
-};
-
-/* ══════════════════════════════════════════
-   STATE & NAVIGATION
-══════════════════════════════════════════ */
-let currentChild = null;
-let radarChartInstance = null;
-
-function showReport(child) {
-  currentChild = child;
-  const d = DATA[child];
-
-  // CSS vars
-  document.documentElement.style.setProperty('--active-h', d.color);
-  document.documentElement.style.setProperty('--active-l', d.color);
-  document.documentElement.style.setProperty('--active-glow', d.glow);
-
-  document.getElementById('landing').style.display = 'none';
-  const rpt = document.getElementById('report');
-  rpt.classList.add('visible');
-
-  // NAV
-  document.getElementById('navName').textContent = d.name;
-
-  // HERO
-  const av = document.getElementById('heroAvatar');
-  av.textContent = d.initials;
-  av.style.background = d.avatarGrad;
-  document.getElementById('heroSub').textContent = d.year;
-  document.getElementById('heroName').textContent = d.name;
-  document.getElementById('heroQuote').textContent = d.quote;
-
-  // LEG
-  document.getElementById('leg2').style.background = d.color;
-
-  // STATS
-  const sr = document.getElementById('statRow');
-  sr.innerHTML = d.stats.map(s => `
-    <div class="stat-card">
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-val">${s.val}</div>
-      <div class="stat-delta delta-${s.dir}">${s.delta}</div>
-    </div>`).join('');
-
-  // PROGRESS
-  const pl = document.getElementById('progressList');
-  pl.innerHTML = d.progress.map(p => {
-    const pctT1 = Math.round((p.t1 / p.max) * 100);
-    const pctT2 = Math.round((p.t2 / p.max) * 100);
-    const dir = p.t2 > p.t1 ? 'delta-up' : p.t2 < p.t1 ? 'delta-down' : 'delta-same';
-    const arrow = p.t2 > p.t1 ? '↑' : p.t2 < p.t1 ? '↓' : '→';
-    return `
-    <div class="prog-item">
-      <div class="prog-header">
-        <span class="prog-name">${p.name}</span>
-        <span class="prog-vals ${dir}">${arrow} ${p.t1l} → ${p.t2l}</span>
-      </div>
-      <div class="prog-track">
-        <div class="prog-fill-t1" style="width:${pctT1}%"></div>
-        <div class="prog-fill-t2" style="width:0%" data-target="${pctT2}"></div>
-      </div>
-    </div>`;
-  }).join('');
-
-  // SUBJECTS
-  const sg = document.getElementById('subjGrid');
-  sg.innerHTML = d.subjects.map(s => {
-    const dir = parseFloat(s.t2) > parseFloat(s.t1) ? 'delta-up' : parseFloat(s.t2) < parseFloat(s.t1) ? 'delta-down' : 'delta-same';
-    return `
-    <div class="subj-card">
-      <div class="subj-top">
-        <span class="subj-icon">${s.icon}</span>
-        <span class="subj-name">${s.name}</span>
-        <div class="subj-grades">
-          <span class="grade-pill">${s.t1}</span>
-          <span class="arrow-grade ${dir}">→</span>
-          <span class="grade-pill t2">${s.t2}</span>
-        </div>
-      </div>
-      <div class="subj-bar-wrap"><div class="subj-bar" style="width:0%" data-target="${s.pct}%"></div></div>
-      <div class="subj-quote">${s.quote}</div>
-    </div>`;
-  }).join('');
-
-  // ELS
-  document.getElementById('elsTitle').textContent = d.els.title;
-  const ep = document.getElementById('elsPath');
-  ep.innerHTML = d.els.nodes.map((n,i) => {
-    const conn = i < d.els.nodes.length - 1
-      ? `<div class="els-connector ${n.status === 'done' ? 'done' : ''}"></div>`
-      : '';
-    return `
-    <div class="els-node">
-      <div class="els-circle ${n.status}">${n.status === 'done' ? '✓' : n.status === 'current' ? '★' : n.label.split(' ')[0]}</div>
-      <div class="els-label ${n.status}">${n.label}</div>
-    </div>${conn}`;
-  }).join('');
-
-  const es = document.getElementById('elsStrands');
-  es.innerHTML = d.els.strands.map(s => `
-    <div class="subj-card" style="padding:.85rem 1rem;">
-      <div style="font-size:.8rem;font-weight:500;margin-bottom:.4rem;">${s.name}</div>
-      <div style="font-size:.75rem;color:var(--muted);margin-bottom:.2rem;">T1: ${s.t1}</div>
-      <div style="font-size:.75rem;color:var(--active-h);font-weight:500;">T2: ${s.t2}</div>
-    </div>`).join('');
-
-  // Add ELS comment
-  const existingComment = document.getElementById('elsComment');
-  if (existingComment) existingComment.remove();
-  const commentEl = document.createElement('p');
-  commentEl.id = 'elsComment';
-  commentEl.style.cssText = 'font-size:.85rem;color:var(--muted);line-height:1.7;margin-top:1rem;font-style:italic;';
-  commentEl.textContent = d.els.comment;
-  document.getElementById('elsStrands').after(commentEl);
-
-  // STRENGTHS
-  document.getElementById('strengthsList').innerHTML = d.strengths.map(s => `
-    <div class="strength-item">
-      <div class="strength-icon">${s.icon}</div>
-      <div class="strength-text"><strong>${s.title}</strong>${s.text}</div>
-    </div>`).join('');
-
-  // QUESTS
-  document.getElementById('questsList').innerHTML = d.quests.map((q,i) => `
-    <div class="quest-item">
-      <div class="quest-num">${i+1}</div>
-      <div class="quest-text"><strong>${q.title}</strong>${q.text}</div>
-    </div>`).join('');
-
-  // FUN
-  document.getElementById('funGrid').innerHTML = d.fun.map(f => `
-    <div class="fun-card">
-      <span class="fun-emoji">${f.emoji}</span>
-      <div class="fun-stat">${f.stat}</div>
-      <div class="fun-desc">${f.desc}</div>
-    </div>`).join('');
-
-  // RADAR CHART
-  if (radarChartInstance) { radarChartInstance.destroy(); radarChartInstance = null; }
-  const ctx = document.getElementById('radarChart').getContext('2d');
-  radarChartInstance = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: d.radar.labels,
-      datasets: [
-        {
-          label: 'Term 1',
-          data: d.radar.t1,
-          backgroundColor: 'rgba(255,255,255,0.05)',
-          borderColor: 'rgba(255,255,255,0.3)',
-          pointBackgroundColor: 'rgba(255,255,255,0.3)',
-          pointRadius: 3,
-        },
-        {
-          label: 'Term 2',
-          data: d.radar.t2,
-          backgroundColor: d.color + '30',
-          borderColor: d.color,
-          pointBackgroundColor: d.color,
-          pointRadius: 4,
-        }
+      chips: [
+        { big:"↗ ×3", small:"Every single core subject went up in every single term — no exceptions" },
+        { big:"1.8 → 4.0", small:"Speaking & listening more than doubled across the year" },
+        { big:"High", small:"Cambridge Maths band — one step from Outstanding" }
       ]
     },
-    options: {
-      responsive: false,
-      animation: { duration: 1000 },
-      scales: {
-        r: {
-          min: 0, max: 100,
-          grid: { color: 'rgba(255,255,255,0.08)' },
-          angleLines: { color: 'rgba(255,255,255,0.08)' },
-          ticks: { display: false },
-          pointLabels: { color: 'rgba(240,239,245,0.6)', font: { family: 'DM Sans', size: 11 } }
-        }
-      },
-      plugins: { legend: { display: false } }
+    subjects: [
+      { icon:"📚", name:"English", teacher:"Chris Miloszewski", vals:[2.1,3.1,3.6], effort:"Very good", atl:"Very good",
+        flag:{type:"star", label:"🚀 +1.5 in one year"},
+        quote:"Maiia has grown in confidence and is expressing her ideas more clearly in both speaking and writing." },
+      { icon:"➗", name:"Mathematics", teacher:"Chris Miloszewski", vals:[3.1,4.1,4.5], effort:"Very good", atl:"Very good",
+        flag:{type:"up", label:"📈 Up every term"},
+        quote:"A secure understanding of fractions, decimals, percentages, ratio and statistics." },
+      { icon:"🔬", name:"Science", teacher:"Chris Miloszewski", vals:[3.1,3.7,3.8], effort:"Very good", atl:"Very good",
+        flag:{type:"up", label:"📈 Up every term"},
+        quote:"She has engaged particularly well in our STEM projects, especially designing solar-powered cars." },
+      { icon:"💻", name:"ICT", teacher:"", vals:[4.3,4.8,5.7], effort:"Very good", atl:"Very good",
+        flag:{type:"star", label:"⭐ 5.7 — family's top grade"},
+        quote:"" },
+      { icon:"🤖", name:"STEM+", teacher:"", vals:[4,4,4], effort:"Very good", atl:"Very good",
+        flag:{type:"steady", label:"⚖️ Solid all year"},
+        quote:"" },
+      { icon:"🌐", name:"Global Perspectives", teacher:"", vals:[3,4,4], effort:"Very good", atl:"Very good",
+        flag:{type:"up", label:"📈 Levelled up"},
+        quote:"" },
+      { icon:"🇹🇭", name:"Thai (Non-native)", teacher:"", vals:[3.5,3.5,3.4], effort:"Excellent", atl:"Excellent",
+        flag:{type:"steady", label:"⚖️ Excellent effort"},
+        quote:"" },
+      { icon:"🀄", name:"Chinese", teacher:"", vals:[4.5,4.5,4.8], effort:"Very good", atl:"Very good",
+        flag:{type:"up", label:"📈 Third language rising"},
+        quote:"" },
+      { icon:"⚽", name:"PE", teacher:"", vals:[4.1,4.5,4.5], effort:"Satisfactory", atl:"Satisfactory",
+        flag:{type:"steady", label:"⚖️ Strong and steady"},
+        quote:"" },
+      { icon:"🎨", name:"Art", teacher:"", vals:[3.5,3.6,4.8], effort:"Very good", atl:"Very good",
+        flag:{type:"star", label:"🚀 +1.2 in Term 3"},
+        quote:"" },
+      { icon:"🎵", name:"Music", teacher:"", vals:[4.5,4.8,4.4], effort:"Very good", atl:"Very good",
+        flag:{type:"steady", label:"⚖️ Consistently musical"},
+        quote:"" }
+    ],
+    radar: {
+      max: 6,
+      axes: ["English","Maths","Science","ICT","Art","Chinese"],
+      t1: [2.1,3.1,3.1,4.3,3.5,4.5],
+      t3: [3.6,4.5,3.8,5.7,4.8,4.8]
+    },
+    english: {
+      intro: "Maiia arrived speaking almost no English — and built a whole school life in it within one year.",
+      path: [
+        { icon:"🌱", label:"Level 3", sub:"Term 1 · 'top-performing student in class'", state:"done" },
+        { icon:"📗", label:"Level 2", sub:"Term 2 · Competent in all four skills", state:"done" },
+        { icon:"📘", label:"Level 1", sub:"in-class support only", state:"done" },
+        { icon:"🎓", label:"Graduated", sub:"Term 3 · ready for secondary school", state:"star" }
+      ],
+      note: "English overall: 2.1 → 3.1 → 3.6. Speaking & listening: 1.8 → 4.0 — from the hardest skill to one of the strongest. Cambridge band: Good in English, and that's before secondary school even starts.",
+      quote: { text:"You are one of the top-performing students in class… continue to be an inspiration to your classmates!", who:"Ms Gonzales, ELS" }
+    },
+    powers: [
+      { icon:"🏗️", title:"The foundation builder", desc:"First friends, routines and confidence — then performance. She built a whole new life in a new language, her way, and it worked." },
+      { icon:"📈", title:"The unstoppable climber", desc:"English, Maths and Science: up every term, all year. Not one dip, anywhere. That consistency is a superpower most adults don't have." },
+      { icon:"💻", title:"ICT ace", desc:"5.7 out of 6 — the single highest subject grade anyone in the family earned this year." }
+    ],
+    quests: [
+      { icon:"🏫", title:"Attendance streak", desc:"The trend is already right (7 → 6 → 3 absences). New quest: the longest unbroken streak of school days — every day present is a day of English." },
+      { icon:"🧩", title:"Word-problem boss level", desc:"Fluency in Maths methods: done. Next: reasoning and word problems, where Maths and English level up together." },
+      { icon:"🎒", title:"Secondary school, striving mode", desc:"Not surviving — striving. The foundation is built; next year the goal is to perform from week one, the Iron Lady way." }
+    ],
+    fun: [
+      { big:"5.7/6", label:"ICT — the highest single grade in the whole family this year" },
+      { big:"0", label:"late days across the entire year — punctuality queen 👑" },
+      { big:"1.8→4.0", label:"speaking & listening — more than doubled" },
+      { big:"High", label:"Cambridge Maths band — one step below Outstanding" }
+    ],
+    yir: {
+      phases: [
+        { tag:"The start", title:"A new school, a new language, a new life", text:"September: Year 6 in a school where nothing sounded familiar. Speaking & listening at 1.8. She started the way she always does — building friendships, routines and safety first. The teacher saw it immediately: 'determination and resilience'." },
+        { tag:"The climb", title:"The infrastructure paid off", text:"Once her world felt solid, the grades took off: English +1.0 in a single term, Maths +1.0, ELS levels falling one per term. By spring she was 'Competent' in all four English skills and smiling her way through every lesson." },
+        { tag:"Ready", title:"Graduated, in every sense", text:"Term 3: ELS complete, Cambridge 'High' in Maths, Art up 1.2, and a teacher's farewell that says it all: 'I wish her every success as she moves on to secondary school.' She knows she did this. That knowledge travels." }
+      ],
+      forward: {
+        title:"What she takes with her 🚀",
+        text:"She has already done the hardest thing a kid can do — rebuilt her whole world in a new language — and finished the year ready not to survive, but to perform. Whatever comes next is simply the next foundation to build. She knows how."
+      }
     }
+  }
+};
+
+</script>
+
+<script>
+/* ═══════════════ HELPERS ═══════════════ */
+const LETTER_MAP = {'A*':8,'A':7,'B':6,'C':5,'D':4,'E':3,'F':2,'G':1,'U':0};
+const LETTER_TICKS = [[8,'A*'],[7,'A'],[6,'B'],[5,'C'],[4,'D'],[3,'E']];
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const toNum = v => typeof v === 'number' ? v : LETTER_MAP[v];
+
+function effortClass(word){
+  const w = STR.effortClassMap[word] || '';
+  return w;
+}
+
+/* Multi-line trend chart (SVG) */
+function lineChart(lines, opts){
+  const W = 640, H = 300, padL = 46, padR = 18, padT = 18, padB = 34;
+  const min = opts.min, max = opts.max;
+  const iw = W - padL - padR, ih = H - padT - padB;
+  const x = i => padL + iw * (i / 2);
+  const y = v => padT + ih * (1 - (v - min) / (max - min));
+  let g = '';
+  const ticks = opts.letterTicks ? LETTER_TICKS.filter(t=>t[0]>=min&&t[0]<=max) : null;
+  const gridVals = ticks ? ticks.map(t=>t[0]) : (()=>{const a=[];for(let v=min;v<=max;v++)a.push(v);return a;})();
+  gridVals.forEach(v=>{
+    g += `<line x1="${padL}" y1="${y(v)}" x2="${W-padR}" y2="${y(v)}" stroke="#2a2a33" stroke-width="1"/>`;
+    const lab = ticks ? ticks.find(t=>t[0]===v)[1] : v;
+    g += `<text x="${padL-10}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="#8b8b96" font-family="Manrope">${lab}</text>`;
   });
-
-  // Legend for radar
-  document.getElementById('radarLegend').innerHTML = `
-    <div class="radar-leg-item"><span class="radar-dot" style="background:rgba(255,255,255,0.3)"></span>Term 1 score</div>
-    <div class="radar-leg-item"><span class="radar-dot" style="background:${d.color}"></span>Term 2 score</div>
-    ${d.radar.labels.map((l,i) => `<div class="radar-leg-item" style="font-size:.75rem;color:var(--muted);">${l}: <span style="color:${d.color};font-weight:500;">${d.radar.t2[i]}%</span></div>`).join('')}
-  `;
-
-  // Scroll top
-  window.scrollTo({ top: 0, behavior: 'instant' });
-
-  // Animate bars with delay
-  setTimeout(() => {
-    document.querySelectorAll('.prog-fill-t2[data-target]').forEach(el => {
-      el.style.width = el.dataset.target + '%';
+  STR.terms.forEach((t,i)=>{
+    g += `<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="12" fill="#8b8b96" font-family="Manrope" font-weight="600">${t}</text>`;
+  });
+  lines.forEach(l=>{
+    const pts = l.values.map((v,i)=>[x(i), y(toNum(v))]);
+    const d = pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+    g += `<path d="${d}" fill="none" stroke="${l.color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    pts.forEach((p,i)=>{
+      g += `<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="#0e0e12" stroke="${l.color}" stroke-width="2.5"/>`;
+      if(i===2){
+        const lab = typeof l.values[2]==='number' ? l.values[2] : l.values[2];
+        g += `<text x="${p[0]+2}" y="${p[1]-9}" text-anchor="end" font-size="11" font-weight="700" fill="${l.color}" font-family="Manrope">${lab}</text>`;
+      }
     });
-    document.querySelectorAll('.subj-bar[data-target]').forEach(el => {
-      el.style.width = el.dataset.target;
-    });
-  }, 200);
-
-  // Nav tab reset
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelector('.nav-tab').classList.add('active');
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">${g}</svg>`;
 }
 
-function goBack() {
+/* Tiny 3-point sparkline */
+function spark(values, min, max, color){
+  const W=64, H=26, p=4;
+  const x = i => p + (W-2*p)*(i/2);
+  const y = v => p + (H-2*p)*(1-(toNum(v)-min)/(max-min));
+  const pts = values.map((v,i)=>[x(i),y(v)]);
+  const d = pts.map((pt,i)=>(i?'L':'M')+pt[0].toFixed(1)+' '+pt[1].toFixed(1)).join(' ');
+  let g = `<path d="${d}" fill="none" stroke="${color}" stroke-width="2"/>`;
+  pts.forEach((pt,i)=>{ g += `<circle cx="${pt[0]}" cy="${pt[1]}" r="${i===2?3:2.2}" fill="${color}"/>`; });
+  return `<svg class="spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">${g}</svg>`;
+}
+
+/* Radar chart: two series */
+function radar(cfg, accent){
+  const W=460, H=400, cx=W/2, cy=H/2+6, R=140;
+  const n = cfg.axes.length;
+  const ang = i => -Math.PI/2 + i*2*Math.PI/n;
+  const pt = (i, r) => [cx + r*Math.cos(ang(i)), cy + r*Math.sin(ang(i))];
+  let g = '';
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const ring = cfg.axes.map((_,i)=>pt(i,R*f).map(v=>v.toFixed(1)).join(',')).join(' ');
+    g += `<polygon points="${ring}" fill="none" stroke="#2a2a33" stroke-width="1"/>`;
+  });
+  cfg.axes.forEach((a,i)=>{
+    const [x2,y2]=pt(i,R);
+    g += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#2a2a33" stroke-width="1"/>`;
+    const [lx,ly]=pt(i,R+26);
+    g += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#e8e8ec" font-family="Manrope" font-weight="600">${esc(a)}</text>`;
+  });
+  const poly = (vals, color, fillOp) => {
+    const pts = vals.map((v,i)=>pt(i, R*Math.max(0.02, toNum(v)/cfg.max)).map(x=>x.toFixed(1)).join(',')).join(' ');
+    return `<polygon points="${pts}" fill="${color}" fill-opacity="${fillOp}" stroke="${color}" stroke-width="2"/>`;
+  };
+  g += poly(cfg.t1, '#8b8b96', 0.12);
+  g += poly(cfg.t3, accent, 0.22);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+
+/* ═══════════════ RENDER ═══════════════ */
+const ACCENT = { sofiia: '#a78bfa', mark: '#34d399', maiia: '#fb923c' };
+
+function renderLanding(){
+  const cards = Object.entries(DATA).map(([id,c])=>`
+    <div class="child-card" data-child="${id}" role="button" tabindex="0" aria-label="${esc(c.name)}">
+      <div class="child-avatar">${c.initials}</div>
+      <div class="child-name">${esc(c.name)}</div>
+      <div class="child-year">${esc(c.year)}</div>
+      <span class="child-cta">${STR.viewReport}</span>
+    </div>`).join('');
+  document.getElementById('landing').innerHTML = `
+    <div class="landing-eyebrow">${STR.eyebrow}</div>
+    <h1 class="landing-title">${STR.h1}</h1>
+    <p class="landing-sub">${STR.tagline}</p>
+    <div class="child-grid">${cards}</div>`;
+  document.querySelectorAll('.child-card').forEach(el=>{
+    const open = ()=>openReport(el.dataset.child);
+    el.addEventListener('click', open);
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
+  });
+}
+
+function badgeHTML(kind, word){
+  return `<span class="badge ${effortClass(word)}">${kind}: ${esc(word)}</span>`;
+}
+
+function sectionJourney(c){
+  const chart = lineChart(c.journey.lines, c.journey.opts);
+  const legend = c.journey.lines.map(l=>`<span class="legend-item"><span class="legend-dot" style="background:${l.color}"></span>${esc(l.label)}</span>`).join('');
+  const chips = c.journey.chips.map(ch=>`<div class="jchip"><div class="big">${esc(ch.big)}</div><div class="small">${esc(ch.small)}</div></div>`).join('');
+  const attCard = (title, vals, note)=>{
+    const mx = Math.max(...vals, 1);
+    const bars = vals.map((v,i)=>`<div class="att-bar"><span class="n">${v}</span><div class="bar" style="height:${Math.max(6, v/mx*100)}%"></div><span class="t">${STR.terms[i]}</span></div>`).join('');
+    return `<div class="att-card"><div class="att-title">${esc(title)}</div><div class="att-bars">${bars}</div><div class="att-note">${esc(note)}</div></div>`;
+  };
+  return `<section class="section" id="sec-journey">
+    <h2 class="section-title"><span class="num">01</span> · ${STR.sec.journey}</h2>
+    <div class="panel">
+      <div class="chart-wrap">${chart}</div>
+      <div class="legend">${legend}</div>
+      <div class="journey-chips">${chips}</div>
+      <div class="att-grid">
+        ${attCard(STR.att.absent, c.attendance.absent, c.attendance.absentNote)}
+        ${attCard(STR.att.late, c.attendance.late, c.attendance.lateNote)}
+      </div>
+    </div>
+  </section>`;
+}
+
+function sectionSubjects(c){
+  const cards = c.subjects.map(s=>{
+    const flag = s.flag ? `<span class="subj-flag ${s.flag.type}">${esc(s.flag.label)}</span>` : '';
+    const chips = s.vals.map((v,i)=>`<span class="g">${esc(v)}</span>${i<2?'<span class="arrow">→</span>':''}`).join('');
+    const sp = spark(s.vals, c.scale.min, c.scale.max, ACCENT[c.id]);
+    const badges = [
+      badgeHTML(STR.chips.effort, s.effort),
+      badgeHTML(STR.chips.atl, s.atl),
+      s.exam ? `<span class="badge">${STR.chips.exam}: ${esc(s.exam)}</span>` : '',
+      s.pred ? `<span class="badge">${STR.chips.pred}: ${esc(s.pred)}</span>` : ''
+    ].join('');
+    return `<div class="subject-card">
+      <div class="subj-head"><span class="subj-icon">${s.icon}</span>
+        <div style="flex:1"><div class="subj-name">${esc(s.name)}</div><div class="subj-teacher">${esc(s.teacher)}</div></div>
+      </div>
+      ${flag}
+      <div class="subj-trend"><div class="grade-chips">${chips}</div>${sp}</div>
+      <div class="badge-row">${badges}</div>
+      ${s.quote ? `<div class="subj-quote">«${esc(s.quote)}»</div>` : ''}
+    </div>`;
+  }).join('');
+  return `<section class="section" id="sec-subjects">
+    <h2 class="section-title"><span class="num">02</span> · ${STR.sec.subjects}</h2>
+    <div class="subject-grid">${cards}</div>
+  </section>`;
+}
+
+function sectionRadar(c){
+  return `<section class="section" id="sec-radar">
+    <h2 class="section-title"><span class="num">03</span> · ${STR.sec.radar}</h2>
+    <div class="panel radar-flex">
+      ${radar(c.radar, ACCENT[c.id])}
+      <div class="radar-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#8b8b96"></span>${STR.terms[0]}</span>
+        <span class="legend-item"><span class="legend-dot" style="background:${ACCENT[c.id]}"></span>${STR.terms[2]}</span>
+      </div>
+    </div>
+  </section>`;
+}
+
+function sectionEnglish(c){
+  const e = c.english;
+  const steps = e.path.map(p=>`<div class="quest-step ${p.state||''}">
+      <div class="icon">${p.icon}</div>
+      <div class="lab">${esc(p.label)}</div>
+      <div class="sub">${esc(p.sub||'')}</div>
+    </div>`).join('');
+  return `<section class="section" id="sec-english">
+    <h2 class="section-title"><span class="num">04</span> · ${STR.sec.english}</h2>
+    <div class="panel">
+      <p class="quest-note">${esc(e.intro)}</p>
+      <div class="quest-path">${steps}</div>
+      <p class="quest-note">${esc(e.note)}</p>
+      ${e.quote ? `<div class="quest-quote">«${esc(e.quote.text)}»<span class="who">— ${esc(e.quote.who)}</span></div>` : ''}
+    </div>
+  </section>`;
+}
+
+function sectionPowers(c){
+  const item = p=>`<div class="pq-item"><span class="icon">${p.icon}</span><div><div class="title">${esc(p.title)}</div><div class="desc">${esc(p.desc)}</div></div></div>`;
+  return `<section class="section" id="sec-powers">
+    <h2 class="section-title"><span class="num">05</span> · ${STR.sec.powers}</h2>
+    <div class="pq-grid">
+      <div class="pq-col"><h3>${STR.powersTitle}</h3>${c.powers.map(item).join('')}</div>
+      <div class="pq-col"><h3>${STR.questsTitle}</h3>${c.quests.map(item).join('')}</div>
+    </div>
+  </section>`;
+}
+
+function sectionFun(c){
+  const cards = c.fun.map(f=>`<div class="fun-card"><div class="fun-big">${esc(f.big)}</div><div class="fun-label">${esc(f.label)}</div></div>`).join('');
+  return `<section class="section" id="sec-fun">
+    <h2 class="section-title"><span class="num">06</span> · ${STR.sec.fun}</h2>
+    <div class="fun-grid">${cards}</div>
+  </section>`;
+}
+
+function sectionYear(c){
+  const phases = c.yir.phases.map(p=>`<div class="yir-phase">
+      <span class="yir-tag">${esc(p.tag)}</span>
+      <div class="yir-title">${esc(p.title)}</div>
+      <div class="yir-text">${esc(p.text)}</div>
+    </div>`).join('');
+  return `<section class="section" id="sec-year">
+    <h2 class="section-title"><span class="num">07</span> · ${STR.sec.year}</h2>
+    <div class="yir-arc">${phases}</div>
+    <div class="yir-forward">
+      <div class="title">${esc(c.yir.forward.title)}</div>
+      <div class="text">${esc(c.yir.forward.text)}</div>
+    </div>
+  </section>`;
+}
+
+function openReport(id){
+  const c = DATA[id]; c.id = id;
+  document.documentElement.style.setProperty('--active-h', ACCENT[id]);
+  document.getElementById('landing').classList.add('hidden');
+  const rep = document.getElementById('report');
+  rep.classList.add('visible');
+  document.getElementById('navName').textContent = c.name;
+  document.getElementById('navBackLabel').textContent = STR.back;
+  const tabs = STR.tabs.map(t=>`<button class="nav-tab" data-target="sec-${t.id}">${t.label}</button>`).join('');
+  document.getElementById('navTabs').innerHTML = tabs;
+  const grad = {sofiia:'linear-gradient(135deg,#7c3aed,#a78bfa)',mark:'linear-gradient(135deg,#059669,#34d399)',maiia:'linear-gradient(135deg,#ea580c,#fb923c)'}[id];
+  document.getElementById('reportContent').innerHTML = `
+    <header class="hero">
+      <div class="hero-avatar" style="background:${grad}">${c.initials}</div>
+      <div>
+        <div class="hero-sub">${esc(c.year)} · ${STR.fullYear}</div>
+        <h1 class="hero-name">${esc(c.name)}</h1>
+        <p class="hero-quote">«${esc(c.quote.text)}»<span class="who">— ${esc(c.quote.who)}</span></p>
+      </div>
+    </header>
+    ${sectionJourney(c)}
+    ${sectionSubjects(c)}
+    ${sectionRadar(c)}
+    ${sectionEnglish(c)}
+    ${sectionPowers(c)}
+    ${sectionFun(c)}
+    ${sectionYear(c)}
+    <div class="footer">${STR.footer}</div>`;
+  document.querySelectorAll('.nav-tab').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const el = document.getElementById(b.dataset.target);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  window.scrollTo({top:0});
+}
+
+document.getElementById('navBack').addEventListener('click', ()=>{
   document.getElementById('report').classList.remove('visible');
-  document.getElementById('landing').style.display = 'flex';
-  if (radarChartInstance) { radarChartInstance.destroy(); radarChartInstance = null; }
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}
+  document.getElementById('landing').classList.remove('hidden');
+  window.scrollTo({top:0});
+});
 
-function scrollTo2(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-}
+renderLanding();
 </script>
 </body>
 </html>
